@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import HomeContainer from "./components/containers/HomeContainer";
-import MoviesContainer from "./components/containers/MoviesContainer";
-import ShowsContainer from "./components/containers/ShowsContainer";
+import HomeContainer from "../../containers/HomeContainer";
+import MoviesContainer from "../../containers/MoviesContainer";
+import ShowsContainer from "../../containers/ShowsContainer";
 
 function App() {
   return (
