@@ -1,0 +1,45 @@
+.Navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 8rem;
+  background-color: var(--bg-primary-dark);
+  border-top: 1px solid var(--bg-accent);
+
+  &-nav {
+    height: 100%;
+  }
+
+  &-list {
+    list-style: none;
+    display: flex;
+    height: 100%;
+  }
+
+  &-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &-link {
+    padding: 0.5rem;
+    cursor: pointer;
+
+    & svg {
+      width: 3.4rem;
+      height: 3.4rem;
+      fill: var(--bg-accent);
+      transition: fill 200ms ease;
+    }
+  }
+}
+
+// React router NavLink selected class
+.selected svg {
+  fill: var(--brand-primary);
+  transition: fill 200ms ease;
+}
