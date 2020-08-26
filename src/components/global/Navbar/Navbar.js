@@ -17,7 +17,7 @@ function Navbar(props) {
             <NavLink
               className="Navbar-link"
               exact
-              activeClassName="selected"
+              activeClassName="Navbar-link--active"
               to="/">
               <HomeIcon />
             </NavLink>
@@ -26,7 +26,7 @@ function Navbar(props) {
             <NavLink
               className="Navbar-link"
               exact
-              activeClassName="selected"
+              activeClassName="Navbar-link--active"
               to="/movies">
               <MovieIcon />
             </NavLink>
@@ -35,7 +35,7 @@ function Navbar(props) {
             <NavLink
               className="Navbar-link"
               exact
-              activeClassName="selected"
+              activeClassName="Navbar-link--active"
               to="/tv-shows">
               <TelevisionIcon />
             </NavLink>
@@ -44,8 +44,8 @@ function Navbar(props) {
             <NavLink
               className="Navbar-link"
               exact
-              activeClassName="selected"
-              to="/search">
+              activeClassName="Navbar-link--active"
+              to="/">
               <SearchIcon />
             </NavLink>
           </li>

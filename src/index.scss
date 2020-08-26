@@ -12,9 +12,16 @@
   --bg-accent: #1c222e;
   --text-primary: #ffffff;
   --accent-white: #ffffff;
-
   --brand-primary: #fd3a84;
   --brand-secondary: #ffa68d;
+
+  --mobile-small: 320px;
+  --mobile-medium: 375px;
+  --mobile-large: 425px;
+  --tablet: 768px;
+  --laptop: 1024px;
+  --laptop-large: 1440px;
+  --desktop: 2560px;
 }
 
 html {

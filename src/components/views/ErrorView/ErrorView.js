@@ -2,20 +2,20 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import { pageTransition } from "../../../animations/variants";
-import "./MoviesView.scss";
+import "./ErrorView.scss";
 
-function MoviesView(props) {
+function ErrorView(props) {
   return (
     <motion.div
-      key="moviesView"
+      key="errorView"
       initial="out"
       animate="in"
       exit="out"
       variants={pageTransition}
-      className="MoviesView">
-      Movies
+      className="ErrorView">
+      Error
     </motion.div>
   );
 }
 
-export default MoviesView;
+export default ErrorView;

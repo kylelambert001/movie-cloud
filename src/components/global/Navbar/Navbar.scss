@@ -4,17 +4,22 @@
   bottom: 0;
   right: 0;
   height: 8rem;
+  width: 100%;
   background-color: var(--bg-primary-dark);
   border-top: 1px solid var(--bg-accent);
+  z-index: 1000;
 
   &-nav {
     height: 100%;
+    width: 100%;
   }
 
   &-list {
-    list-style: none;
-    display: flex;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
   }
 
   &-item {
@@ -22,24 +27,62 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
   }
 
   &-link {
     padding: 0.5rem;
-    cursor: pointer;
+  }
 
-    & svg {
-      width: 3.4rem;
-      height: 3.4rem;
-      fill: var(--bg-accent);
-      transition: fill 200ms ease;
+  &-link svg {
+    height: 3rem;
+    width: 3rem;
+    fill: var(--bg-accent);
+    transition: fill 200ms ease;
+  }
+
+  &-link--active svg {
+    fill: var(--brand-primary);
+    transition: fill 200ms ease;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .Navbar-link svg {
+    width: 3.4rem;
+    height: 3.4rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Navbar {
+    top: 0;
+    right: unset;
+    width: 9rem;
+    height: 100%;
+    border-top: none;
+    border-right: 1px solid var(--bg-accent);
+
+    &-list {
+      display: block;
+    }
+
+    &-item {
+      height: 9rem;
     }
   }
 }
 
-// React router NavLink selected class
-.selected svg {
-  fill: var(--brand-primary);
-  transition: fill 200ms ease;
+@media screen and (min-width: 1024px) {
+  .Navbar {
+    width: 9.6rem;
+
+    &-item {
+      height: 9.6rem;
+    }
+
+    &-link svg {
+      width: 3.6rem;
+      height: 3.6rem;
+    }
+  }
 }
