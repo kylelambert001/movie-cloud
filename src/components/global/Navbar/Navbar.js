@@ -45,7 +45,7 @@ function Navbar(props) {
               className="Navbar-link"
               exact
               activeClassName="Navbar-link--active"
-              to="/">
+              to="/404">
               <SearchIcon />
             </NavLink>
           </li>

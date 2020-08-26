@@ -5,6 +5,7 @@ import { pageTransition } from "../../../animations/variants";
 import "./HomeView.scss";
 
 function HomeView(props) {
+  console.log(props);
   return (
     <motion.div
       key="homeView"
