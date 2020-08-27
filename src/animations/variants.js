@@ -1,8 +1,8 @@
-export const pageTransition = {
-  in: {
-    opacity: 1,
-  },
-  out: {
+export const pageVariant = {
+  hidden: {
     opacity: 0,
+  },
+  visible: {
+    opacity: 1,
   },
 };

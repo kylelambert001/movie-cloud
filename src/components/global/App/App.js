@@ -7,6 +7,7 @@ import HomeContainer from "../../containers/HomeContainer";
 import MoviesContainer from "../../containers/MoviesContainer";
 import ShowsContainer from "../../containers/ShowsContainer";
 import ErrorView from "../../views/ErrorView/ErrorView";
+
 import "./App.scss";
 
 function App() {

@@ -1,50 +1,76 @@
 import React, { Component } from "react";
 import HomeView from "../views/HomeView/HomeView";
-
-import { getTrendingPromise } from "../../api/promises.js";
+import LoadingView from "../views/LoadingView/LoadingView";
+import ErrorView from "../views/ErrorView/ErrorView";
+import { trendingPromise } from "../../api/promises.js";
 
 class HomeContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      moviesData: null,
-      moviesLoading: true,
-      moviesError: null,
-      showsData: null,
-      showsLoading: true,
-      showsError: null,
+      movies: {
+        loading: true,
+        data: null,
+        error: null,
+      },
+      shows: {
+        loading: true,
+        data: null,
+        error: null,
+      },
     };
   }
 
   componentDidMount() {
-    this.resolveTrendingPromises();
+    this.getTrendingMovies();
+    this.getTrendingShows();
   }
 
-  resolveTrendingPromises() {
-    Promise.all([getTrendingPromise("movie"), getTrendingPromise("tv")])
+  getTrendingMovies() {
+    trendingPromise("movie")
       .then((data) => {
         setTimeout(() => {
-          this.setState({
-            ...this.state,
-            moviesLoading: false,
-            moviesData: data[0],
-            showsLoading: false,
-            showsData: data[1],
-          });
+          const state = this.state;
+          state.movies.loading = false;
+          state.movies.data = data.data;
+          this.setState(state);
         }, 2000);
       })
       .catch((error) => {
-        this.setState({
-          ...this.state,
-          moviesLoading: false,
-          moviesError: error[0],
-          showsLoading: false,
-          showsError: error[1],
-        });
+        const state = this.state;
+        state.movies.loading = false;
+        state.movies.error = error;
+        this.setState(state);
       });
   }
 
+  getTrendingShows() {
+    trendingPromise("tv")
+      .then((data) => {
+        const state = this.state;
+        state.shows.loading = false;
+        state.shows.data = data.data;
+        this.setState(state);
+      })
+      .catch((error) => {
+        const state = this.state;
+        state.shows.loading = false;
+        state.shows.error = error;
+        this.setState(state);
+      });
+  }
+
+  isLoading = () => {
+    return this.state.movies.loading || this.state.shows.loading;
+  };
+
+  isError = () => {
+    return this.state.movies.error || this.state.shows.error;
+  };
+
   render() {
+    if (this.isLoading()) return <LoadingView />;
+    if (this.isError()) return <ErrorView />;
     return <HomeView {...this.state} />;
   }
 }

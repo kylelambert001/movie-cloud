@@ -1,17 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import { pageTransition } from "../../../animations/variants";
+import { pageVariant } from "../../../animations/variants";
 import "./MoviesView.scss";
 
 function MoviesView(props) {
   return (
     <motion.div
-      key="moviesView"
-      initial="out"
-      animate="in"
-      exit="out"
-      variants={pageTransition}
+      key="fm-movies-view"
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={pageVariant}
       className="MoviesView">
       Movies
     </motion.div>

@@ -1,20 +1,22 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-import { pageTransition } from "../../../animations/variants";
+import { pageVariant } from "../../../animations/variants";
+import LoadingView from "../LoadingView/LoadingView";
+import ErrorView from "../ErrorView/ErrorView";
+
 import "./HomeView.scss";
 
 function HomeView(props) {
-  console.log(props);
   return (
     <motion.div
-      key="homeView"
-      initial="out"
-      animate="in"
-      exit="out"
-      variants={pageTransition}
+      key="fm-home-view"
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={pageVariant}
       className="HomeView">
-      Home
+      home view
     </motion.div>
   );
 }

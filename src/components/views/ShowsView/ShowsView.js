@@ -1,17 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import { pageTransition } from "../../../animations/variants";
+import { pageVariant } from "../../../animations/variants";
 import "./ShowsView.scss";
 
 function ShowsView(props) {
   return (
     <motion.div
-      key="showsView"
-      initial="out"
-      animate="in"
-      exit="out"
-      variants={pageTransition}
+      key="fm-shows-view"
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={pageVariant}
       className="ShowsView">
       Shows
     </motion.div>
