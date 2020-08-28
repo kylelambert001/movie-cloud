@@ -1,0 +1,17 @@
+.Spinner {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+
+  &-circle {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    border: 10px solid var(--bg-accent);
+    border-top: 10px solid var(--brand-primary);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

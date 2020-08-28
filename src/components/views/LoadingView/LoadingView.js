@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+import Spinner from "../../global/Spinner/Spinner";
 import { pageVariant } from "../../../animations/variants";
 import "./LoadingView.scss";
 
@@ -13,7 +14,9 @@ function LoadingView(props) {
       exit="hidden"
       variants={pageVariant}
       className="LoadingView">
-      <div>loading......</div>
+      <div className="LoadingView-inner">
+        <Spinner />
+      </div>
     </motion.div>
   );
 }

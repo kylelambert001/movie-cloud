@@ -1,10 +1,7 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { pageVariant } from "../../../animations/variants";
-import LoadingView from "../LoadingView/LoadingView";
-import ErrorView from "../ErrorView/ErrorView";
-
 import "./HomeView.scss";
 
 function HomeView(props) {
