@@ -1,28 +1,28 @@
-import { trendingPromise } from "../../api/promises";
+import { getTrendingAsync } from "../../api/promises";
 
 import * as types from "../types";
+import { batch } from "react-redux";
+
+const action = (type, payload) => {
+  return {
+    type: type,
+    payload: payload,
+  };
+};
 
 export const getTrendingMovies = () => {
   return (dispatch, getState) => {
-    trendingPromise("movie")
+    getTrendingAsync("movie")
       .then((data) => {
-        dispatch({
-          type: types.GET_TRENDING_MOVIES,
-          payload: data.data,
-        });
-        dispatch({
-          type: types.GET_TRENDING_MOVIES_LOADING,
-          payload: false,
+        batch(() => {
+          dispatch(action(types.GET_TRENDING_MOVIES, data.data));
+          dispatch(action(types.GET_TRENDING_MOVIES_LOADING, false));
         });
       })
       .catch((error) => {
-        dispatch({
-          type: types.GET_TRENDING_MOVIES_ERROR,
-          payload: error,
-        });
-        dispatch({
-          type: types.GET_TRENDING_MOVIES_LOADING,
-          payload: false,
+        batch(() => {
+          dispatch(action(types.GET_TRENDING_MOVIES_ERROR, error));
+          dispatch(action(types.GET_TRENDING_MOVIES_LOADING, false));
         });
       });
   };
@@ -30,32 +30,24 @@ export const getTrendingMovies = () => {
 
 export const getTrendingShows = () => {
   return (dispatch, getState) => {
-    trendingPromise("tv")
+    getTrendingAsync("tv")
       .then((data) => {
-        dispatch({
-          type: types.GET_TRENDING_SHOWS,
-          payload: data.data,
-        });
-        dispatch({
-          type: types.GET_TRENDING_SHOWS_LOADING,
-          payload: false,
+        batch(() => {
+          dispatch(action(types.GET_TRENDING_SHOWS, data.data));
+          dispatch(action(types.GET_TRENDING_SHOWS_LOADING, false));
         });
       })
       .catch((error) => {
-        dispatch({
-          type: types.GET_TRENDING_SHOWS_ERROR,
-          payload: error,
-        });
-        dispatch({
-          type: types.GET_TRENDING_SHOWS_LOADING,
-          payload: false,
+        batch(() => {
+          dispatch(action(types.GET_TRENDING_SHOWS_ERROR, error));
+          dispatch(action(types.GET_TRENDING_SHOWS_LOADING, false));
         });
       });
   };
 };
 
-export const resetHomeState = () => {
+export const resetHomeReducer = () => {
   return {
-    type: types.RESET_HOME_STATE,
+    type: types.RESET_HOME_REDUCER,
   };
 };

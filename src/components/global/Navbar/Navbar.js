@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { ReactComponent as HomeIcon } from "../../../assets/icons/home.svg";
-import { ReactComponent as MovieIcon } from "../../../assets/icons/movie.svg";
-import { ReactComponent as TelevisionIcon } from "../../../assets/icons/television.svg";
-import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
+import { ReactComponent as HomeIcon } from "../../../assets/home.svg";
+import { ReactComponent as MovieIcon } from "../../../assets/movie.svg";
+import { ReactComponent as TelevisionIcon } from "../../../assets/television.svg";
+import { ReactComponent as SearchIcon } from "../../../assets/search.svg";
 
 import "./Navbar.scss";
 

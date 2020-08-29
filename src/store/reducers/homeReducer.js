@@ -1,12 +1,12 @@
 import * as types from "../types";
 
 const initState = {
-  movies: {
+  trendingMovies: {
     loading: true,
     data: null,
     error: null,
   },
-  shows: {
+  trendingShows: {
     loading: true,
     data: null,
     error: null,
@@ -18,52 +18,52 @@ const homeReducer = (state = initState, action) => {
     case types.GET_TRENDING_MOVIES:
       return {
         ...state,
-        movies: {
-          ...state.movies,
+        trendingMovies: {
+          ...state.trendingMovies,
           data: action.payload,
         },
       };
     case types.GET_TRENDING_MOVIES_LOADING:
       return {
         ...state,
-        movies: {
-          ...state.movies,
+        trendingMovies: {
+          ...state.trendingMovies,
           loading: action.payload,
         },
       };
     case types.GET_TRENDING_MOVIES_ERROR:
       return {
         ...state,
-        movies: {
-          ...state.movies,
+        trendingMovies: {
+          ...state.trendingMovies,
           error: action.payload,
         },
       };
     case types.GET_TRENDING_SHOWS:
       return {
         ...state,
-        shows: {
-          ...state.shows,
+        trendingShows: {
+          ...state.trendingShows,
           data: action.payload,
         },
       };
     case types.GET_TRENDING_SHOWS_LOADING:
       return {
         ...state,
-        shows: {
-          ...state.shows,
+        trendingShows: {
+          ...state.trendingShows,
           loading: action.payload,
         },
       };
     case types.GET_TRENDING_SHOWS_ERROR:
       return {
         ...state,
-        shows: {
-          ...state.shows,
+        trendingShows: {
+          ...state.trendingShows,
           error: action.payload,
         },
       };
-    case types.RESET_HOME_STATE:
+    case types.RESET_HOME_REDUCER:
       return initState;
     default:
       return state;
