@@ -13,7 +13,7 @@ function MoviesView(props) {
       exit="hidden"
       variants={pageVariant}
       className="MoviesView">
-      Movies
+      movies view
     </motion.div>
   );
 }

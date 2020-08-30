@@ -13,7 +13,7 @@ function ShowsView(props) {
       exit="hidden"
       variants={pageVariant}
       className="ShowsView">
-      Shows
+      shows view
     </motion.div>
   );
 }

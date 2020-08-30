@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Loading from "../global/Loading/Loading";
-
+import MoviesView from "../views/MoviesView/MoviesView";
 import * as actions from "../../store/actions/moviesActions";
-import { isLoading } from "../../utils/helpers";
 
 class MoviesContainer extends Component {
   constructor(props) {
@@ -15,24 +14,35 @@ class MoviesContainer extends Component {
     this.props.getNowPlayingMovies();
     this.props.getPopularMovies();
     this.props.getTopRatedMovies();
-    setTimeout(() => {
-      this.props.getUpcomingMovies();
-    }, 1500);
+    this.props.getUpcomingMovies();
   }
 
   componentWillUnmount() {
     this.props.resetMoviesReducer();
   }
 
+  isLoading(arr) {
+    return arr.some((name) => this.props[name].loading);
+  }
+
   render() {
-    if (isLoading(this.props.moviesReducer)) return <Loading />;
-    return <div>movie view</div>;
+    const loading = this.isLoading([
+      "popularMovies",
+      "nowPlayingMovies",
+      "topRatedMovies",
+      "upcomingMovies",
+    ]);
+    if (loading) return <Loading />;
+    return <MoviesView />;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    moviesReducer: state.moviesReducer,
+    popularMovies: state.moviesReducer.popularMovies,
+    nowPlayingMovies: state.moviesReducer.nowPlayingMovies,
+    topRatedMovies: state.moviesReducer.topRatedMovies,
+    upcomingMovies: state.moviesReducer.upcomingMovies,
   };
 };
 

@@ -1,6 +1,7 @@
-export const isLoading = (stateObject) => {
-  if (typeof stateObject !== "object") return false;
-  return Object.keys(stateObject)
-    .map((key) => stateObject[key])
-    .some((obj) => obj.loading);
+export const hasFetched = (name) => {
+  return this.props[name].data ? true : false;
+};
+
+export const isLoading = (name) => {
+  return this.props[name].loading ? true : false;
 };

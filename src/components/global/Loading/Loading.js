@@ -1,8 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 import Spinner from "../Spinner/Spinner";
-import { pageVariant } from "../../../animations/variants";
 import "./Loading.scss";
 
 function Loading(props) {

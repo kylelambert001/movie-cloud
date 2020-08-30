@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import Loading from "../global/Loading/Loading";
 import HomeView from "../views/HomeView/HomeView";
-import LoadingView from "../views/LoadingView/LoadingView";
 
 import * as actions from "../../store/actions/homeActions";
-import { isLoading } from "../../utils/helpers";
 
 class HomeContainer extends Component {
   constructor(props) {
@@ -14,24 +13,28 @@ class HomeContainer extends Component {
 
   componentDidMount() {
     this.props.getTrendingMovies();
-    setTimeout(() => {
-      this.props.getTrendingShows();
-    }, 1500);
+    this.props.getTrendingShows();
   }
 
   componentWillUnmount() {
     this.props.resetHomeReducer();
   }
 
+  isLoading(arr) {
+    return arr.some((name) => this.props[name].loading);
+  }
+
   render() {
-    if (isLoading(this.props.homeReducer)) return <LoadingView />;
-    return <div>home view</div>;
+    const loading = this.isLoading(["trendingMovies", "trendingShows"]);
+    if (loading) return <Loading />;
+    return <HomeView />;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    homeReducer: state.homeReducer,
+    trendingMovies: state.homeReducer.trendingMovies,
+    trendingShows: state.homeReducer.trendingShows,
   };
 };
 
