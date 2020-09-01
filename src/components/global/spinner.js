@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import "./Spinner.scss";
 
 const spinTransition = {
   loop: Infinity,
@@ -10,11 +9,11 @@ const spinTransition = {
 
 function Spinner(props) {
   return (
-    <div className="Spinner">
+    <div className="spinner">
       <motion.span
         animate={{ rotate: 360 }}
         transition={spinTransition}
-        className="Spinner-circle"></motion.span>
+        className="spinner-circle"></motion.span>
     </div>
   );
 }

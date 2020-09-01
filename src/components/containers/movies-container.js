@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Loading from "../global/Loading/Loading";
-import MoviesView from "../views/MoviesView/MoviesView";
+// import Loading from "../global/Loading/Loading";
+// import MoviesView from "../views/MoviesView/MoviesView";
+import Movies from "../pages/movies";
 import * as actions from "../../store/actions/moviesActions";
 
 class MoviesContainer extends Component {
@@ -26,14 +27,15 @@ class MoviesContainer extends Component {
   }
 
   render() {
-    const loading = this.isLoading([
-      "popularMovies",
-      "nowPlayingMovies",
-      "topRatedMovies",
-      "upcomingMovies",
-    ]);
-    if (loading) return <Loading />;
-    return <MoviesView />;
+    // const loading = this.isLoading([
+    //   "popularMovies",
+    //   "nowPlayingMovies",
+    //   "topRatedMovies",
+    //   "upcomingMovies",
+    // ]);
+    // if (loading) return <Loading />;
+    // return <MoviesView />;
+    return <Movies />;
   }
 }
 

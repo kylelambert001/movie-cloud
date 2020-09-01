@@ -1,4 +1,6 @@
-.Spinner {
+@import "../base/variables";
+
+.spinner {
   position: relative;
   width: 5rem;
   height: 5rem;
@@ -7,8 +9,8 @@
     display: block;
     width: 5rem;
     height: 5rem;
-    border: 10px solid var(--bg-accent);
-    border-top: 10px solid var(--brand-primary);
+    border: 10px solid $primary-light;
+    border-top: 10px solid $brand-primary;
     border-radius: 50%;
     position: absolute;
     top: 0;

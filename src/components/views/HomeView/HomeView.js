@@ -1,20 +1,26 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+import Banner from "../../global/Banner/Banner";
+
 import { pageVariant } from "../../../animations/variants";
 import "./HomeView.scss";
 
 function HomeView(props) {
-  // return <div className="HomeView">home view</div>;
+  const randomNum = Math.floor(
+    Math.random() * props.trendingShows.data.results.length
+  );
+
+  const movie = props.trendingShows.data.results[randomNum];
   return (
     <motion.div
-      key="fm-home-view"
+      // key="fm-home-view"
       initial="hidden"
       animate="visible"
-      exit="hidden"
+      // exit="hidden"
       variants={pageVariant}
       className="HomeView">
-      home view
+      <Banner content={movie} />
     </motion.div>
   );
 }

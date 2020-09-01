@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Loading from "../global/Loading/Loading";
-import HomeView from "../views/HomeView/HomeView";
+// import Loading from "../global/Loading/Loading";
+// import HomeView from "../views/HomeView/HomeView";
+import Home from "../pages/home";
 
 import * as actions from "../../store/actions/homeActions";
 
@@ -25,9 +26,10 @@ class HomeContainer extends Component {
   }
 
   render() {
-    const loading = this.isLoading(["trendingMovies", "trendingShows"]);
-    if (loading) return <Loading />;
-    return <HomeView />;
+    // const loading = this.isLoading(["trendingMovies", "trendingShows"]);
+    // if (loading) return <Loading />;
+    // return <HomeView {...this.props} />;
+    return <Home />;
   }
 }
 

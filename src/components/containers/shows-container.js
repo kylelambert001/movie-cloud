@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Loading from "../global/Loading/Loading";
-import ShowsView from "../views/ShowsView/ShowsView";
+// import Loading from "../global/Loading/Loading";
+// import ShowsView from "../views/ShowsView/ShowsView";
+import Shows from "../pages/shows";
 import * as actions from "../../store/actions/showsActions";
 
 class ShowsContainer extends Component {
@@ -24,9 +25,10 @@ class ShowsContainer extends Component {
   }
 
   render() {
-    const loading = this.isLoading(["popularShows", "topRatedShows"]);
-    if (loading) return <Loading />;
-    return <ShowsView />;
+    // const loading = this.isLoading(["popularShows", "topRatedShows"]);
+    // if (loading) return <Loading />;
+    // return <ShowsView />;
+    return <Shows />;
   }
 }
 
