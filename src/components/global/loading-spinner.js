@@ -7,15 +7,15 @@ const spinTransition = {
   ease: "linear",
 };
 
-function Spinner(props) {
+function LoadingSpinner(props) {
   return (
-    <div className="spinner">
+    <div className="loading-spinner">
       <motion.span
         animate={{ rotate: 360 }}
         transition={spinTransition}
-        className="spinner-circle"></motion.span>
+        className="loading-spinner-circle"></motion.span>
     </div>
   );
 }
 
-export default Spinner;
+export default LoadingSpinner;

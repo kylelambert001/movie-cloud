@@ -13,11 +13,13 @@ class App extends Component {
     return (
       <div className="app">
         <Navbar />
-        <Switch>
-          <Route exact path="/" component={HomeContainer} />
-          <Route exact path="/movies" component={MoviesContainer} />
-          <Route exact path="/shows" component={ShowsContainer} />
-        </Switch>
+        <main className="app-main">
+          <Switch>
+            <Route exact path="/" component={HomeContainer} />
+            <Route exact path="/movies" component={MoviesContainer} />
+            <Route exact path="/shows" component={ShowsContainer} />
+          </Switch>
+        </main>
       </div>
     );
   }

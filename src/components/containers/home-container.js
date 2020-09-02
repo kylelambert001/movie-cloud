@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-// import Loading from "../global/Loading/Loading";
-// import HomeView from "../views/HomeView/HomeView";
+import LoadingSpinner from "../global/loading-spinner";
 import Home from "../pages/home";
 
 import * as actions from "../../store/actions/homeActions";
@@ -22,21 +21,19 @@ class HomeContainer extends Component {
   }
 
   isLoading(arr) {
-    return arr.some((name) => this.props[name].loading);
+    return arr.some((name) => this.props.home[name].loading);
   }
 
   render() {
-    // const loading = this.isLoading(["trendingMovies", "trendingShows"]);
-    // if (loading) return <Loading />;
-    // return <HomeView {...this.props} />;
-    return <Home />;
+    const loading = this.isLoading(["trendingMovies", "trendingShows"]);
+    if (loading) return <LoadingSpinner />;
+    return <Home {...this.props.home} />;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    trendingMovies: state.homeReducer.trendingMovies,
-    trendingShows: state.homeReducer.trendingShows,
+    home: state.homeReducer,
   };
 };
 

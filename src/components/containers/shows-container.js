@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-// import Loading from "../global/Loading/Loading";
-// import ShowsView from "../views/ShowsView/ShowsView";
 import Shows from "../pages/shows";
+import LoadingSpinner from "../global/loading-spinner";
 import * as actions from "../../store/actions/showsActions";
 
 class ShowsContainer extends Component {
@@ -21,21 +20,19 @@ class ShowsContainer extends Component {
   }
 
   isLoading(arr) {
-    return arr.some((name) => this.props[name].loading);
+    return arr.some((name) => this.props.shows[name].loading);
   }
 
   render() {
-    // const loading = this.isLoading(["popularShows", "topRatedShows"]);
-    // if (loading) return <Loading />;
-    // return <ShowsView />;
-    return <Shows />;
+    const loading = this.isLoading(["popularShows", "topRatedShows"]);
+    if (loading) return <LoadingSpinner />;
+    return <Shows {...this.props.shows} />;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    popularShows: state.showsReducer.popularShows,
-    topRatedShows: state.showsReducer.topRatedShows,
+    shows: state.showsReducer,
   };
 };
 

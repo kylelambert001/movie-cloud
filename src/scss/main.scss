@@ -1,7 +1,8 @@
 @import "./base/resets";
 @import "./base/variables";
 
+@import "./components/app";
+@import "./components/hero";
 @import "./components/navbar";
-@import "./components/loading";
 @import "./components/hamburger";
-@import "./components/spinner";
+@import "./components/loading-spinner";

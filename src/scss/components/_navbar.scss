@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid $primary-medium;
   z-index: 2000;
 
   @media (min-width: $breakpoint-tablet) {
@@ -34,7 +35,7 @@
     &-img {
       display: inline-block;
       padding: 0.5rem;
-      height: 80%;
+      height: 70%;
     }
   }
 

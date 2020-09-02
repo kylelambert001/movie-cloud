@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 
+import Hero from "../global/hero";
+
 class Home extends Component {
   render() {
-    return <div className="home">home</div>;
+    const { trendingMovies, trendingShows } = this.props;
+    const content = trendingMovies.data.results[0];
+    return (
+      <div className="home">
+        <Hero content={content} />
+      </div>
+    );
   }
 }
 
