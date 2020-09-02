@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import FadeIn from "./fade-in";
+import HeroInfo from "./hero-info";
 
 class Hero extends Component {
   render() {
     const { content } = this.props;
-    const imageSrc = `https://image.tmdb.org/t/p/original/${content.backdrop_path}`;
+    const { backdrop_path, name, title } = content;
     return (
       <section className="hero">
         <div className="hero-backdrop">
           <FadeIn>
             {(handleOnLoad) => (
               <img
-                src={imageSrc}
-                alt=""
+                src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+                alt={title ? title : name}
                 onLoad={handleOnLoad}
                 className="hero-backdrop-img"
               />
@@ -20,17 +21,7 @@ class Hero extends Component {
           </FadeIn>
         </div>
         <div className="hero-content">
-          <div className="hero-content-box">
-            <h1>title</h1>
-            <p>subtitle</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Blanditiis eius aliquid quis magni, ad voluptatum temporibus
-              delectus asperiores sunt corporis. Ducimus itaque non esse minus
-              deleniti, vitae corrupti excepturi sit. Eaque distinctio atque
-              iure tempore illum! Suscipit voluptatibus doloribus blanditiis
-            </p>
-          </div>
+          <HeroInfo content={content} />
         </div>
       </section>
     );

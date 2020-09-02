@@ -4,7 +4,7 @@
   position: relative;
   background-color: $primary-dark;
   height: 7rem;
-  padding: 0 2rem;
+  padding: 0 2.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@
 
   @media (min-width: $breakpoint-laptop-m) {
     height: 8.5rem;
-    padding: 0 3rem;
+    padding: 0 3.6rem;
   }
 
   &-logo {

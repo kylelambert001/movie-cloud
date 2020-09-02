@@ -5,7 +5,7 @@ import Shows from "../pages/shows";
 import LoadingSpinner from "../global/loading-spinner";
 import * as actions from "../../store/actions/showsActions";
 
-class ShowsContainer extends Component {
+class TvShowsContainer extends Component {
   constructor(props) {
     super(props);
   }
@@ -44,4 +44,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TvShowsContainer);
