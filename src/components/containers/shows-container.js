@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import Shows from "../pages/shows";
 import LoadingSpinner from "../global/loading-spinner";
 import * as actions from "../../store/actions/showsActions";
 
-class TvShowsContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+const listTypes = ["popularShows", "topRatedShows"];
 
+class ShowsContainer extends Component {
   componentDidMount() {
     this.props.getPopularShows();
     this.props.getTopRatedShows();
@@ -19,14 +16,13 @@ class TvShowsContainer extends Component {
     this.props.resetShowsReducer();
   }
 
-  isLoading(arr) {
-    return arr.some((name) => this.props.shows[name].loading);
+  isLoading() {
+    return listTypes.some((name) => this.props.shows[name].loading);
   }
 
   render() {
-    const loading = this.isLoading(["popularShows", "topRatedShows"]);
-    if (loading) return <LoadingSpinner />;
-    return <Shows {...this.props.shows} />;
+    if (this.isLoading()) return <LoadingSpinner />;
+    return <Shows shows={this.props.shows} />;
   }
 }
 
@@ -44,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TvShowsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowsContainer);

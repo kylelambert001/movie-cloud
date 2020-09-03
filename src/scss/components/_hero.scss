@@ -9,74 +9,10 @@
     position: relative;
     display: block;
     height: 0;
+    padding-bottom: 45%;
+  }
+
+  @media (min-width: $breakpoint-laptop-l) {
     padding-bottom: 40%;
-  }
-
-  &-backdrop {
-    position: relative;
-    height: 30rem;
-    background-color: inherit;
-
-    @media (min-width: $breakpoint-mobile-l) {
-      height: 35rem;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      height: 40rem;
-    }
-
-    @media (min-width: $breakpoint-laptop-m) {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-      width: 75%;
-    }
-
-    &-img {
-      display: inline-block;
-      height: 100%;
-      width: 100%;
-      max-width: none;
-      object-fit: cover;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 60%;
-      z-index: 1000;
-      background: linear-gradient(0deg, $primary-dark 0%, transparent 100%);
-
-      @media (min-width: $breakpoint-laptop-m) {
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: unset;
-        height: 100%;
-        width: 70%;
-        background: linear-gradient(90deg, $primary-dark 0%, transparent 100%);
-      }
-    }
-  }
-
-  &-content {
-    padding: 2.6rem;
-
-    @media (min-width: $breakpoint-laptop-m) {
-      padding: 0 3.6rem;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      height: 100%;
-      width: 50%;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-    }
   }
 }

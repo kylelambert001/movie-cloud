@@ -6,9 +6,7 @@ import { fadeInVariant } from "../../animations/variants";
 class FadeIn extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hasLoaded: false,
-    };
+    this.state = { hasLoaded: false };
     this.handleOnLoad = this.handleOnLoad.bind(this);
   }
 

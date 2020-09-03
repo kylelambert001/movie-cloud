@@ -4,7 +4,7 @@ export const pageVariant = {
     opacity: 1,
     transition: {
       delay: 0.2,
-      duration: 1.2,
+      duration: 1,
       ease: "easeOut",
     },
   },
@@ -17,23 +17,23 @@ export const fadeInVariant = {
   visible: {
     opacity: 1,
     transition: {
-      delay: 0.6,
-      duration: 0.8,
+      delay: 0.2,
+      duration: 0.6,
       ease: "easeOut",
     },
   },
 };
 
-export const heroInfoVariant = {
+export const heroInformationVariant = {
   hidden: {
     opacity: 0,
-    y: 15,
+    y: 20,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: "easeOut",
     },
   },

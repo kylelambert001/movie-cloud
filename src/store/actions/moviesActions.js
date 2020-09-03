@@ -15,7 +15,7 @@ export const getPopularMovies = () => {
     getMoviesAsync("popular")
       .then((data) => {
         batch(() => {
-          dispatch(action(types.GET_POPULAR_MOVIES, data.data));
+          dispatch(action(types.GET_POPULAR_MOVIES, data.data.results));
           dispatch(action(types.GET_POPULAR_MOVIES_LOADING, false));
         });
       })
@@ -33,7 +33,7 @@ export const getNowPlayingMovies = () => {
     getMoviesAsync("now_playing")
       .then((data) => {
         batch(() => {
-          dispatch(action(types.GET_NOW_PLAYING_MOVIES, data.data));
+          dispatch(action(types.GET_NOW_PLAYING_MOVIES, data.data.results));
           dispatch(action(types.GET_NOW_PLAYING_MOVIES_LOADING, false));
         });
       })
@@ -51,7 +51,7 @@ export const getTopRatedMovies = () => {
     getMoviesAsync("top_rated")
       .then((data) => {
         batch(() => {
-          dispatch(action(types.GET_TOP_RATED_MOVIES, data.data));
+          dispatch(action(types.GET_TOP_RATED_MOVIES, data.data.results));
           dispatch(action(types.GET_TOP_RATED_MOVIES_LOADING, false));
         });
       })
@@ -69,7 +69,7 @@ export const getUpcomingMovies = () => {
     getMoviesAsync("upcoming")
       .then((data) => {
         batch(() => {
-          dispatch(action(types.GET_UPCOMING_MOVIES, data.data));
+          dispatch(action(types.GET_UPCOMING_MOVIES, data.data.results));
           dispatch(action(types.GET_UPCOMING_MOVIES_LOADING, false));
         });
       })

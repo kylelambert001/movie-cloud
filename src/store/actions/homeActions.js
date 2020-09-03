@@ -15,7 +15,7 @@ export const getTrendingMovies = () => {
     getTrendingAsync("movie")
       .then((data) => {
         batch(() => {
-          dispatch(action(types.GET_TRENDING_MOVIES, data.data));
+          dispatch(action(types.GET_TRENDING_MOVIES, data.data.results));
           dispatch(action(types.GET_TRENDING_MOVIES_LOADING, false));
         });
       })
@@ -33,7 +33,7 @@ export const getTrendingShows = () => {
     getTrendingAsync("tv")
       .then((data) => {
         batch(() => {
-          dispatch(action(types.GET_TRENDING_SHOWS, data.data));
+          dispatch(action(types.GET_TRENDING_SHOWS, data.data.results));
           dispatch(action(types.GET_TRENDING_SHOWS_LOADING, false));
         });
       })

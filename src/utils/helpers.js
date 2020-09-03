@@ -17,7 +17,7 @@ export const getGenres = (arr) => {
 export const getRandomItem = (arr) => {
   if (!Array.isArray(arr)) {
     console.log("Array not found in getRandomItem");
-    return;
+    return null;
   }
   const randomNum = Math.floor(Math.random() * arr.length + 1);
   return arr[randomNum];

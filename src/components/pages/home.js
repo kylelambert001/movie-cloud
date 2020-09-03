@@ -6,16 +6,18 @@ import { getRandomItem } from "../../utils/helpers";
 import Hero from "../global/hero";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.randomMovie = getRandomItem(props.home.trendingMovies.data);
+  }
   render() {
-    const { results } = this.props.trendingMovies.data;
-    const randomMovie = getRandomItem(results);
     return (
       <motion.div
         initial="hidden"
         animate="visible"
         variants={pageVariant}
         className="home">
-        <Hero content={randomMovie} />
+        <Hero data={this.randomMovie} mediaType="movie" />
       </motion.div>
     );
   }

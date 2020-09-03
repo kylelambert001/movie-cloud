@@ -5,11 +5,14 @@ import Movies from "../pages/movies";
 import LoadingSpinner from "../global/loading-spinner";
 import * as actions from "../../store/actions/moviesActions";
 
-class MoviesContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+const listTypes = [
+  "popularMovies",
+  "nowPlayingMovies",
+  "topRatedMovies",
+  "upcomingMovies",
+];
 
+class MoviesContainer extends Component {
   componentDidMount() {
     this.props.getNowPlayingMovies();
     this.props.getPopularMovies();
@@ -21,19 +24,13 @@ class MoviesContainer extends Component {
     this.props.resetMoviesReducer();
   }
 
-  isLoading(arr) {
-    return arr.some((name) => this.props.movies[name].loading);
+  isLoading() {
+    return listTypes.some((name) => this.props.movies[name].loading);
   }
 
   render() {
-    const loading = this.isLoading([
-      "popularMovies",
-      "nowPlayingMovies",
-      "topRatedMovies",
-      "upcomingMovies",
-    ]);
-    if (loading) return <LoadingSpinner />;
-    return <Movies {...this.props.movies} />;
+    if (this.isLoading()) return <LoadingSpinner />;
+    return <Movies movies={this.props.movies} />;
   }
 }
 

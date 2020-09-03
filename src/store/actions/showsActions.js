@@ -15,7 +15,7 @@ export const getPopularShows = () => {
     getShowsAsync("popular")
       .then((data) => {
         batch(() => {
-          dispatch(action(types.GET_POPULAR_SHOWS, data.data));
+          dispatch(action(types.GET_POPULAR_SHOWS, data.data.results));
           dispatch(action(types.GET_POPULAR_SHOWS_LOADING, false));
         });
       })
@@ -33,7 +33,7 @@ export const getTopRatedShows = () => {
     getShowsAsync("top_rated")
       .then((data) => {
         batch(() => {
-          dispatch(action(types.GET_TOP_RATED_SHOWS, data.data));
+          dispatch(action(types.GET_TOP_RATED_SHOWS, data.data.results));
           dispatch(action(types.GET_TOP_RATED_SHOWS_LOADING, false));
         });
       })

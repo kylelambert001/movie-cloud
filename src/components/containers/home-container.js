@@ -6,11 +6,9 @@ import Home from "../pages/home";
 
 import * as actions from "../../store/actions/homeActions";
 
-class HomeContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+const listTypes = ["trendingMovies", "trendingShows"];
 
+class HomeContainer extends Component {
   componentDidMount() {
     this.props.getTrendingMovies();
     this.props.getTrendingShows();
@@ -20,14 +18,13 @@ class HomeContainer extends Component {
     this.props.resetHomeReducer();
   }
 
-  isLoading(arr) {
-    return arr.some((name) => this.props.home[name].loading);
+  isLoading() {
+    return listTypes.some((name) => this.props.home[name].loading);
   }
 
   render() {
-    const loading = this.isLoading(["trendingMovies", "trendingShows"]);
-    if (loading) return <LoadingSpinner />;
-    return <Home {...this.props.home} />;
+    if (this.isLoading()) return <LoadingSpinner />;
+    return <Home home={this.props.home} />;
   }
 }
 
