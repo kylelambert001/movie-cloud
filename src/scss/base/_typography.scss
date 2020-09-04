@@ -9,16 +9,14 @@ body {
 h1 {
   font-size: 3rem;
   font-weight: 400;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.8rem;
 
   @media (min-width: $breakpoint-tablet) {
     font-size: 3.4rem;
-    margin-bottom: 1.6rem;
   }
 
   @media (min-width: $breakpoint-laptop-m) {
     font-size: 3.8rem;
-    margin-bottom: 1.8rem;
   }
 }
 

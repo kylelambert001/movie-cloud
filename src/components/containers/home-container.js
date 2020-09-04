@@ -5,7 +5,6 @@ import LoadingSpinner from "../global/loading-spinner";
 import Home from "../pages/home";
 
 import * as actions from "../../store/actions/homeActions";
-
 const listTypes = ["trendingMovies", "trendingShows"];
 
 class HomeContainer extends Component {

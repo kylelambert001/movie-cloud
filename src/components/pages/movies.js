@@ -13,8 +13,10 @@ class Movies extends Component {
   render() {
     return (
       <motion.div
+        key="fm-movies"
         initial="hidden"
         animate="visible"
+        exit="hidden"
         variants={pageVariant}
         className="movies">
         <Hero data={this.randomShow} mediaType="movie" />

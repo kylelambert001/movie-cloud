@@ -34,7 +34,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: -1px;
     height: 60%;
     z-index: 1000;
     background: linear-gradient(0deg, $primary-dark 0%, transparent 100%);
@@ -42,10 +42,10 @@
     @media (min-width: $breakpoint-laptop-m) {
       top: 0;
       bottom: 0;
-      left: 0;
+      left: -1px;
       right: unset;
       height: 100%;
-      width: 70%;
+      width: 90%;
       background: linear-gradient(90deg, $primary-dark 0%, transparent 100%);
     }
   }

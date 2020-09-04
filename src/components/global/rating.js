@@ -8,7 +8,7 @@ function Rating({ voteAverage, voteCount }) {
   return (
     <div className="rating">
       <span className="rating-score">{getAverage()}</span>
-      {voteCount && <span className="rating-count">{`${voteCount} Reviews`}</span>}
+      <span className="rating-count">{`${voteCount} Reviews`}</span>
     </div>
   );
 }

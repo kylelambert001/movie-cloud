@@ -28,8 +28,7 @@
     color: $text-secondary;
     font-size: 1.5rem;
     font-weight: 300;
-    margin-right: 1.6rem;
-    line-height: 1.6;
+    margin: 0.5rem 2rem 0.5rem 0;
   }
 
   &-overview {
@@ -37,7 +36,11 @@
 
     @media (min-width: $breakpoint-mobile-l) {
       display: block;
-      margin-top: 1.4rem;
+      margin-top: 1.6rem;
+    }
+
+    @media (min-width: $breakpoint-laptop-l) {
+      width: 90%;
     }
   }
 }

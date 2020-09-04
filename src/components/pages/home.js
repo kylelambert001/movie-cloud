@@ -13,8 +13,10 @@ class Home extends Component {
   render() {
     return (
       <motion.div
+        key="fm-home"
         initial="hidden"
         animate="visible"
+        exit="hidden"
         variants={pageVariant}
         className="home">
         <Hero data={this.randomMovie} mediaType="movie" />
