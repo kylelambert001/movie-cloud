@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { pageVariant } from "../../animations/variants";
 import { getRandomItem } from "../../utils/helpers";
 import Hero from "../global/hero";
+import Carousel from "../global/carousel";
 
 class Home extends Component {
   constructor(props) {
@@ -20,6 +21,11 @@ class Home extends Component {
         variants={pageVariant}
         className="home">
         <Hero data={this.randomMovie} mediaType="movie" />
+
+        <Carousel
+          items={this.props.home.trendingMovies.data}
+          mediaType="movie"
+        />
       </motion.div>
     );
   }

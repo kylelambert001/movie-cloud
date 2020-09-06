@@ -1,0 +1,73 @@
+.card {
+  flex-shrink: 0;
+  flex-grow: 0;
+  scroll-snap-align: start;
+  margin-right: 10px;
+  width: 100%;
+
+  @media (min-width: $breakpoint-mobile-l) {
+    width: calc(0.5 * (100% - 10px));
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    width: calc(0.33334 * (100% - 20px));
+  }
+
+  @media (min-width: $breakpoint-laptop-m) {
+    width: calc(0.25 * (100% - 30px));
+  }
+
+  @media (min-width: $breakpoint-laptop-l) {
+    width: calc(0.2 * (100% - 40px));
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    width: calc(0.16667 * (100% - 50px));
+  }
+
+  &-poster {
+    position: relative;
+    height: 0;
+    background-color: $primary-light;
+    padding-top: 150%;
+    overflow: hidden;
+
+    &-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      max-width: none;
+      transition: transform 150ms ease-out;
+
+      &:hover {
+        transform-origin: center;
+        transform: scale(1.05);
+        transition: transform 150ms ease-out;
+      }
+    }
+  }
+
+  &-meta {
+    margin-top: 1rem;
+    height: 50px;
+  }
+
+  &-title,
+  &-release {
+    line-height: 1.6;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &-release {
+    font-size: 1.5rem;
+    color: $text-secondary;
+  }
+}

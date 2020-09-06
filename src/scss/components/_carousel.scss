@@ -1,0 +1,56 @@
+@import "../base/variables";
+
+.carousel {
+  position: relative;
+  width: 100%;
+  padding: 0 2.6rem;
+  margin: 3rem 0;
+
+  @media (min-width: $breakpoint-laptop-m) {
+    padding: 0 3.6rem;
+  }
+
+  &-prev,
+  &-next {
+    display: none;
+
+    @media (min-width: $breakpoint-laptop-m) {
+      display: block;
+      position: absolute;
+      width: 4rem;
+      background-color: $primary-dark;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      opacity: 0.5;
+      z-index: 2000;
+    }
+  }
+
+  &-prev {
+    display: none;
+    top: 0;
+    left: 36px;
+    bottom: calc(50px + 1rem);
+  }
+
+  &-next {
+    top: 0;
+    right: 36px;
+    bottom: calc(50px + 1rem);
+  }
+
+  &-items {
+    position: relative;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
