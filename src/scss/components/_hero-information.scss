@@ -27,12 +27,15 @@
     margin-top: 0.8rem;
   }
 
+  &-rating {
+    margin-right: 2rem;
+  }
+
   &-span {
-    display: block;
     color: $text-secondary;
     font-size: 1.5rem;
     font-weight: 300;
-    margin: 0.5rem 2rem 0.5rem 0;
+    margin-right: 2rem;
   }
 
   &-overview {

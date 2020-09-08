@@ -8,18 +8,14 @@ class Carousel extends Component {
     this.carouselItems = React.createRef();
   }
 
-  componentDidMount() {
-    console.log(this.carouselItems);
-  }
-
   render() {
-    const { items, mediaType } = this.props;
+    const { itemsArray, mediaType } = this.props;
     return (
       <div className="carousel">
-        <button className="carousel-prev">prev</button>
-        <button className="carousel-next">next</button>
+        {/* <button className="carousel-prev">&#9664;</button>
+        <button className="carousel-next">&#9658;</button> */}
         <div ref={this.carouselItems} className="carousel-items">
-          {items.map((item) => (
+          {itemsArray.map((item) => (
             <Card key={uuidv4()} data={item} mediaType={mediaType} />
           ))}
         </div>

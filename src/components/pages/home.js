@@ -4,13 +4,18 @@ import { motion } from "framer-motion";
 import { pageVariant } from "../../animations/variants";
 import { getRandomItem } from "../../utils/helpers";
 import Hero from "../global/hero";
-import Carousel from "../global/carousel";
+import ShowcaseItems from "../global/showcase-items";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.randomMovie = getRandomItem(props.home.trendingMovies.data);
   }
+
+  componentDidMount() {
+    document.title = "Home";
+  }
+
   render() {
     return (
       <motion.div
@@ -21,10 +26,15 @@ class Home extends Component {
         variants={pageVariant}
         className="home">
         <Hero data={this.randomMovie} mediaType="movie" />
-
-        <Carousel
-          items={this.props.home.trendingMovies.data}
+        <ShowcaseItems
+          heading="Trending Movies"
+          itemsArray={this.props.home.trendingMovies.data}
           mediaType="movie"
+        />
+        <ShowcaseItems
+          heading="Trending Shows"
+          itemsArray={this.props.home.trendingShows.data}
+          mediaType="tv"
         />
       </motion.div>
     );

@@ -3,28 +3,28 @@
 .carousel {
   position: relative;
   width: 100%;
-  padding: 0 2.6rem;
-  margin: 3rem 0;
-
-  @media (min-width: $breakpoint-laptop-m) {
-    padding: 0 3.6rem;
-  }
 
   &-prev,
   &-next {
     display: none;
+    transition: opacity 150ms ease-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
 
     @media (min-width: $breakpoint-laptop-m) {
       display: block;
       position: absolute;
       width: 4rem;
       background-color: $primary-dark;
+      color: inherit;
       outline: none;
       border: none;
       cursor: pointer;
       color: inherit;
+      z-index: 5000;
       opacity: 0.5;
-      z-index: 2000;
     }
   }
 

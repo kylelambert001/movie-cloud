@@ -2,27 +2,31 @@
   flex-shrink: 0;
   flex-grow: 0;
   scroll-snap-align: start;
-  margin-right: 10px;
+  margin-right: 7px;
   width: 100%;
 
   @media (min-width: $breakpoint-mobile-l) {
-    width: calc(0.5 * (100% - 10px));
+    width: calc(0.5 * (100% - 7px));
   }
 
   @media (min-width: $breakpoint-tablet) {
-    width: calc(0.33334 * (100% - 20px));
+    width: calc(0.33334 * (100% - 14px));
   }
 
   @media (min-width: $breakpoint-laptop-m) {
-    width: calc(0.25 * (100% - 30px));
+    width: calc(0.25 * (100% - 21px));
   }
 
   @media (min-width: $breakpoint-laptop-l) {
-    width: calc(0.2 * (100% - 40px));
+    width: calc(0.2 * (100% - 28px));
   }
 
   @media (min-width: $breakpoint-desktop) {
-    width: calc(0.16667 * (100% - 50px));
+    width: calc(0.16667 * (100% - 35px));
+  }
+
+  @media (min-width: $breakpoint-desktop-l) {
+    width: calc(0.14285 * (100% - 42px));
   }
 
   &-poster {
@@ -30,6 +34,7 @@
     height: 0;
     background-color: $primary-light;
     padding-top: 150%;
+    z-index: 2000;
     overflow: hidden;
 
     &-img {
@@ -55,19 +60,29 @@
 
   &-meta {
     margin-top: 1rem;
+    padding-left: 0.3rem;
     height: 50px;
   }
 
-  &-title,
-  &-release {
+  &-line {
     line-height: 1.6;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-  }
 
-  &-release {
-    font-size: 1.5rem;
-    color: $text-secondary;
+    &-one {
+      color: $text-primary;
+    }
+
+    &-two {
+      color: $text-secondary;
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+
+      span {
+        margin-left: 1rem;
+      }
+    }
   }
 }
