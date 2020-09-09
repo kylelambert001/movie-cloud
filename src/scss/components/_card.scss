@@ -64,11 +64,14 @@
     height: 50px;
   }
 
-  &-line {
-    line-height: 1.6;
+  &-text {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  &-line {
+    line-height: 1.6;
 
     &-one {
       color: $text-primary;
@@ -82,6 +85,9 @@
 
       span {
         margin-left: 1rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
   }

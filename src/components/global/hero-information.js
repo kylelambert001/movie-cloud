@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import StarRating from "./star-rating";
 import { heroInformationVariant } from "../../animations/variants";
-import { truncateStr, getGenres } from "../../utils/helpers";
+import { truncateStr, findGenreNames } from "../../utils/helpers";
 
 function HeroInformation(props) {
   const {
@@ -16,6 +16,7 @@ function HeroInformation(props) {
     vote_count = 0,
     release_date,
     genre_ids,
+    genres,
     first_air_date,
   } = props.data;
   const { mediaType } = props;
@@ -23,6 +24,16 @@ function HeroInformation(props) {
   const getYear = (date) => {
     if (typeof date !== "string") return "No Date";
     return date.slice(0, 4);
+  };
+
+  const renderGenres = () => {
+    if (genre_ids) return findGenreNames(genre_ids);
+    if (genres)
+      return genres
+        .map((genre) => genre.name)
+        .slice(0, 3)
+        .join(", ");
+    return "No Genres";
   };
 
   const linkPath = `/details/${mediaType}/${id}`;
@@ -35,18 +46,20 @@ function HeroInformation(props) {
       <div className="hero-information-meta">
         <div className="hero-information-rating">
           <StarRating
-            rating={vote_average}
+            rating={vote_average / 2}
             dimensions="22px"
             spacings="3px"
             emptyColors="#1c222e"
           />
         </div>
         <span className="hero-information-span">{`${vote_count} Reviews`}</span>
-        <span className="hero-information-span">{getGenres(genre_ids)}</span>
-        <span className="hero-information-span">{getYear(release_date)}</span>
+        <span className="hero-information-span">{renderGenres()}</span>
+        {release_date && (
+          <span className="hero-information-span">{getYear(release_date)}</span>
+        )}
       </div>
       <p className="hero-information-overview">
-        {overview ? truncateStr(overview, 60) : "No Overview"}
+        {overview ? truncateStr(overview, 55) : "No Overview"}
       </p>
     </>
   );
@@ -59,18 +72,22 @@ function HeroInformation(props) {
       <div className="hero-information-meta">
         <div className="hero-information-rating">
           <StarRating
-            rating={vote_average}
+            rating={vote_average / 2}
             dimensions="22px"
             spacings="3px"
             emptyColors="#1c222e"
           />
         </div>
         <span className="hero-information-span">{`${vote_count} Reviews`}</span>
-        <span className="hero-information-span">{getGenres(genre_ids)}</span>
-        <span className="hero-information-span">{getYear(first_air_date)}</span>
+        <span className="hero-information-span">{renderGenres()}</span>
+        {first_air_date && (
+          <span className="hero-information-span">
+            {getYear(first_air_date)}
+          </span>
+        )}
       </div>
       <p className="hero-information-overview">
-        {overview ? truncateStr(overview, 60) : "No Overview"}
+        {overview ? truncateStr(overview, 55) : "No Overview"}
       </p>
     </>
   );

@@ -11,6 +11,16 @@ const initState = {
     data: null,
     error: null,
   },
+  airingTodayShows: {
+    loading: true,
+    data: null,
+    error: null,
+  },
+  onTheAirShows: {
+    loading: true,
+    data: null,
+    error: null,
+  },
 };
 
 const showsReducer = (state = initState, action) => {
@@ -60,6 +70,54 @@ const showsReducer = (state = initState, action) => {
         ...state,
         topRatedShows: {
           ...state.topRatedShows,
+          error: action.payload,
+        },
+      };
+    case types.GET_AIRING_TODAY_SHOWS:
+      return {
+        ...state,
+        airingTodayShows: {
+          ...state.airingTodayShows,
+          data: action.payload,
+        },
+      };
+    case types.GET_AIRING_TODAY_SHOWS_LOADING:
+      return {
+        ...state,
+        airingTodayShows: {
+          ...state.airingTodayShows,
+          loading: action.payload,
+        },
+      };
+    case types.GET_AIRING_TODAY_SHOWS_ERROR:
+      return {
+        ...state,
+        airingTodayShows: {
+          ...state.airingTodayShows,
+          error: action.payload,
+        },
+      };
+    case types.GET_ON_THE_AIR_SHOWS:
+      return {
+        ...state,
+        onTheAirShows: {
+          ...state.onTheAirShows,
+          data: action.payload,
+        },
+      };
+    case types.GET_ON_THE_AIR_SHOWS_LOADING:
+      return {
+        ...state,
+        onTheAirShows: {
+          ...state.onTheAirShows,
+          loading: action.payload,
+        },
+      };
+    case types.GET_ON_THE_AIR_SHOWS_ERROR:
+      return {
+        ...state,
+        onTheAirShows: {
+          ...state.onTheAirShows,
           error: action.payload,
         },
       };

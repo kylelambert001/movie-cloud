@@ -5,6 +5,7 @@ import { pageVariant } from "../../animations/variants";
 import { getRandomItem } from "../../utils/helpers";
 import Hero from "../global/hero";
 import ShowcaseItems from "../global/showcase-items";
+import Footer from "../global/footer";
 
 class Home extends Component {
   constructor(props) {
@@ -18,24 +19,21 @@ class Home extends Component {
 
   render() {
     return (
-      <motion.div
-        key="fm-home"
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-        variants={pageVariant}
-        className="home">
+      <motion.div initial="hidden" animate="visible" variants={pageVariant}>
         <Hero data={this.randomMovie} mediaType="movie" />
-        <ShowcaseItems
-          heading="Trending Movies"
-          itemsArray={this.props.home.trendingMovies.data}
-          mediaType="movie"
-        />
-        <ShowcaseItems
-          heading="Trending Shows"
-          itemsArray={this.props.home.trendingShows.data}
-          mediaType="tv"
-        />
+        <section>
+          <ShowcaseItems
+            heading="Trending Movies"
+            itemsArray={this.props.home.trendingMovies.data}
+            mediaType="movie"
+          />
+          <ShowcaseItems
+            heading="Trending Shows"
+            itemsArray={this.props.home.trendingShows.data}
+            mediaType="tv"
+          />
+        </section>
+        <Footer />
       </motion.div>
     );
   }

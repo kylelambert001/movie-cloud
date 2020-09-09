@@ -4,12 +4,19 @@ import Shows from "../pages/shows";
 import LoadingSpinner from "../global/loading-spinner";
 import * as actions from "../../store/actions/showsActions";
 
-const listTypes = ["popularShows", "topRatedShows"];
+const listTypes = [
+  "popularShows",
+  "topRatedShows",
+  "airingTodayShows",
+  "onTheAirShows",
+];
 
 class ShowsContainer extends Component {
   componentDidMount() {
     this.props.getPopularShows();
     this.props.getTopRatedShows();
+    this.props.getAiringTodayShows();
+    this.props.getOnTheAirShows();
   }
 
   componentWillUnmount() {
@@ -36,6 +43,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getPopularShows: () => dispatch(actions.getPopularShows()),
     getTopRatedShows: () => dispatch(actions.getTopRatedShows()),
+    getAiringTodayShows: () => dispatch(actions.getAiringTodayShows()),
+    getOnTheAirShows: () => dispatch(actions.getOnTheAirShows()),
     resetShowsReducer: () => dispatch(actions.resetShowsReducer()),
   };
 };

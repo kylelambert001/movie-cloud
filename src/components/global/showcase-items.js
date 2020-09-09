@@ -1,14 +1,17 @@
-import React from "react";
 import Carousel from "./carousel";
 
-function ShowcaseItems(props) {
-  const { heading = "Title", itemsArray, mediaType } = props;
-  return (
-    <div className="showcase-items">
-      <h2 className="showcase-items-head">{heading}</h2>
-      <Carousel itemsArray={itemsArray} mediaType={mediaType} />
-    </div>
-  );
+import React, { PureComponent } from "react";
+
+class ShowcaseItems extends PureComponent {
+  render() {
+    const { heading, itemsArray, mediaType } = this.props;
+    return (
+      <div className="showcase-items">
+        <h2 className="showcase-items-head">{heading}</h2>
+        <Carousel itemsArray={itemsArray} mediaType={mediaType} />
+      </div>
+    );
+  }
 }
 
 export default ShowcaseItems;

@@ -19,3 +19,15 @@ export const getShowsAsync = (listType) => {
     `https://api.themoviedb.org/3/tv/${listType}?api_key=${API_KEY}`
   );
 };
+
+export const getMovieDetailsAsync = (contentId) => {
+  return axios.get(
+    `https://api.themoviedb.org/3/movie/${contentId}?api_key=${API_KEY}&append_to_response=credits,images`
+  );
+};
+
+export const getShowDetailsAsync = (contentId) => {
+  return axios.get(
+    `https://api.themoviedb.org/3/tv/${contentId}?api_key=${API_KEY}&append_to_response=credits,images,episode_groups`
+  );
+};

@@ -18,7 +18,9 @@ class Card extends Component {
         <div className="card-poster">
           <FadeIn>
             {(handleOnLoad) => (
-              <Link to={`/details/${this.props.mediaType}/${id}`}>
+              <Link
+                className="card-poster-link"
+                to={`/details/${this.props.mediaType}/${id}`}>
                 {poster_path && (
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
@@ -33,7 +35,7 @@ class Card extends Component {
         </div>
         <div className="card-meta">
           <div className="card-line card-line-one">
-            <p>{title}</p>
+            <p className="card-text">{title}</p>
           </div>
           <div className="card-line card-line-two">
             <StarRating rating={vote_average / 2} />
@@ -72,7 +74,7 @@ class Card extends Component {
         </div>
         <div className="card-meta">
           <div className="card-line card-line-one">
-            <p>{name}</p>
+            <p className="card-text">{name}</p>
           </div>
           <div className="card-line card-line-two">
             <StarRating rating={vote_average / 2} />
@@ -105,7 +107,7 @@ class Card extends Component {
         </div>
         <div className="card-meta">
           <div className="card-line card-line-one">
-            <p>{name}</p>
+            <p className="card-text">{name}</p>
           </div>
           <div className="card-line card-line-two">line two</div>
         </div>

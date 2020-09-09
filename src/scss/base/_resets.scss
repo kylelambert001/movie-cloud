@@ -17,6 +17,7 @@ body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,
     Helvetica Neue, Arial, sans-serif, sans-serif;
   background-color: $primary-medium;
+  overscroll-behavior: none;
 }
 
 ul {

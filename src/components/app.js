@@ -1,34 +1,38 @@
 import React from "react";
-import { AnimatePresence } from "framer-motion";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import Navbar from "./global/navbar";
+import Sidebar from "./global/sidebar";
 import HomeContainer from "./containers/home-container";
 import MoviesContainer from "./containers/movies-container";
 import ShowsContainer from "./containers/shows-container";
 import DetailsContainer from "./containers/details-container";
 
-import "../scss/main.scss";
+function isMatched(type) {
+  return type === "movie" || type === "tv" || type === "person" ? true : false;
+}
 
 function App(props) {
-  const location = useLocation();
+  const renderDetailsRoute = (params) => {
+    if (isMatched(params.type))
+      return <DetailsContainer mediaType={params.type} contentId={params.id} />;
+    return <Redirect to="/" />;
+  };
 
   return (
     <div className="app">
-      <Navbar />
+      <Sidebar />
       <main>
-        <AnimatePresence exitBeforeEnter>
-          <Switch location={location} key={location.pathname}>
-            <Route exact path="/" component={HomeContainer} />
-            <Route exact path="/movies" component={MoviesContainer} />
-            <Route exact path="/shows" component={ShowsContainer} />
-            <Route
-              exact
-              path="/details/:type/:id"
-              component={DetailsContainer}
-            />
-          </Switch>
-        </AnimatePresence>
+        <Switch>
+          <Route exact path="/" component={HomeContainer} />
+          <Route exact path="/movies" component={MoviesContainer} />
+          <Route exact path="/shows" component={ShowsContainer} />
+          <Route
+            exact
+            path="/details/:type/:id"
+            render={(history) =>
+              renderDetailsRoute(history.match.params)
+            }></Route>
+        </Switch>
       </main>
     </div>
   );

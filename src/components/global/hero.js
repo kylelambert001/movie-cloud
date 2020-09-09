@@ -6,15 +6,13 @@ import HeroInformation from "./hero-information";
 function Hero(props) {
   const { mediaType, data } = props;
   return (
-    data && (
-      <section className="hero">
-        <HeroBackdrop
-          backdropPath={data.backdrop_path}
-          alt={mediaType === "movie" ? data.title : data.name}
-        />
-        <HeroInformation data={data} mediaType={mediaType} />
-      </section>
-    )
+    <section className="hero">
+      <HeroBackdrop
+        backdropPath={data.backdrop_path}
+        alt={mediaType === "movie" ? data.title : data.name}
+      />
+      <HeroInformation data={data} mediaType={mediaType} />
+    </section>
   );
 }
 

@@ -5,7 +5,7 @@ export const truncateStr = (str, words) => {
   return str.split(" ").slice(0, words).join(" ") + "...";
 };
 
-export const getGenres = (arr) => {
+export const findGenreNames = (arr) => {
   if (!Array.isArray(arr)) return "No Genres";
   return genres
     .filter((genre) => new Set(arr).has(genre.id))
