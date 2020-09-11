@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Shows from "../pages/shows";
-import LoadingSpinner from "../global/loading-spinner";
-import * as actions from "../../store/actions/showsActions";
 
-const listTypes = [
+import Shows from "../pages/shows";
+import Loading from "../pages/loading";
+import Error from "../pages/error";
+
+import * as actions from "../../store/actions/showsActions";
+import { isLoading, isError } from "../../utils/helpers";
+
+const categories = [
   "popularShows",
   "topRatedShows",
   "airingTodayShows",
@@ -12,6 +16,12 @@ const listTypes = [
 ];
 
 class ShowsContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.isLoading = isLoading.bind(this);
+    this.isError = isError.bind(this);
+  }
+
   componentDidMount() {
     this.props.getPopularShows();
     this.props.getTopRatedShows();
@@ -23,19 +33,26 @@ class ShowsContainer extends Component {
     this.props.resetShowsReducer();
   }
 
-  isLoading() {
-    return listTypes.some((name) => this.props.shows[name].loading);
-  }
-
   render() {
-    if (this.isLoading()) return <LoadingSpinner />;
-    return <Shows shows={this.props.shows} />;
+    if (this.isLoading(categories)) return <Loading />;
+    if (this.isError(categories)) return <Error />;
+    return (
+      <Shows
+        popularShows={this.props.popularShows}
+        topRatedShows={this.props.topRatedShows}
+        airingTodayShows={this.props.airingTodayShows}
+        onTheAirShows={this.props.onTheAirShows}
+      />
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    shows: state.showsReducer,
+    popularShows: state.showsReducer.popularShows,
+    topRatedShows: state.showsReducer.topRatedShows,
+    airingTodayShows: state.showsReducer.airingTodayShows,
+    onTheAirShows: state.showsReducer.onTheAirShows,
   };
 };
 

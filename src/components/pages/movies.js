@@ -1,50 +1,63 @@
 import React, { Component } from "react";
-import { motion } from "framer-motion";
 
-import { pageVariant } from "../../animations/variants";
-import { getRandomItem } from "../../utils/helpers";
+import PageLayout from "../layouts/page-layout";
 import ShowcaseItems from "../global/showcase-items";
 import Hero from "../global/hero";
 import Footer from "../global/footer";
+import { guardArray } from "../../utils/guards";
 
 class Movies extends Component {
-  constructor(props) {
-    super(props);
-    this.randomShow = getRandomItem(props.movies.upcomingMovies.data);
-  }
-
   componentDidMount() {
     document.title = "Movies";
   }
 
   render() {
+    const {
+      popularMovies,
+      topRatedMovies,
+      upcomingMovies,
+      nowPlayingMovies,
+    } = this.props;
+
     return (
-      <motion.div initial="hidden" animate="visible" variants={pageVariant}>
-        <Hero data={this.randomShow} mediaType="movie" />
-        <section>
-          <ShowcaseItems
-            heading="Upcoming Movies"
-            itemsArray={this.props.movies.upcomingMovies.data}
-            mediaType="movie"
-          />
-          <ShowcaseItems
-            heading="Popular Movies"
-            itemsArray={this.props.movies.popularMovies.data}
-            mediaType="movie"
-          />
-          <ShowcaseItems
-            heading="Top Rated Movies"
-            itemsArray={this.props.movies.topRatedMovies.data}
-            mediaType="movie"
-          />
-          <ShowcaseItems
-            heading="Now Playing Movies"
-            itemsArray={this.props.movies.nowPlayingMovies.data}
-            mediaType="movie"
-          />
-        </section>
+      <PageLayout>
+        <main>
+          {guardArray(popularMovies.data) && (
+            <Hero item={popularMovies.data[0]} mediaType="movie" />
+          )}
+          <section>
+            {guardArray(popularMovies.data) && (
+              <ShowcaseItems
+                heading="Popular Movies"
+                items={popularMovies.data}
+                mediaType="movie"
+              />
+            )}
+            {guardArray(topRatedMovies.data) && (
+              <ShowcaseItems
+                heading="Top Rated Movies"
+                items={topRatedMovies.data}
+                mediaType="movie"
+              />
+            )}
+            {guardArray(nowPlayingMovies.data) && (
+              <ShowcaseItems
+                heading="Now Playing Movies"
+                items={nowPlayingMovies.data}
+                mediaType="movie"
+              />
+            )}
+            {guardArray(upcomingMovies.data) && (
+              <ShowcaseItems
+                heading="Upcoming Movies"
+                items={upcomingMovies.data}
+                mediaType="movie"
+              />
+            )}
+          </section>
+        </main>
         <Footer />
-      </motion.div>
+      </PageLayout>
     );
   }
 }

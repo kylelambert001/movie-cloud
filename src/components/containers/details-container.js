@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import LoadingSpinner from "../global/loading-spinner";
 import Details from "../pages/details";
+import Loading from "../pages/loading";
+import Error from "../pages/error";
+
 import * as actions from "../../store/actions/detailsActions";
 
 class DetailsContainer extends Component {
@@ -11,10 +13,9 @@ class DetailsContainer extends Component {
   }
 
   fetchDetails() {
-    const { mediaType, contentId } = this.props;
-    if (mediaType === "movie") this.props.getMovieDetails(contentId);
-    if (mediaType === "tv") this.props.getShowDetails(contentId);
-    if (mediaType === "person") console.log("fetch person details");
+    const { mediaType, itemId } = this.props;
+    if (mediaType === "movie") this.props.getMovieDetails(itemId);
+    if (mediaType === "tv") this.props.getShowDetails(itemId);
   }
 
   componentWillUnmount() {
@@ -22,19 +23,24 @@ class DetailsContainer extends Component {
   }
 
   render() {
-    const { loading, error, data } = this.props.details;
+    // const { loading, error, data } = this.props.details;
 
-    if (loading) return <LoadingSpinner />;
-    if (error) return <div>error</div>;
-    return (
-      <Details details={this.props.details} mediaType={this.props.mediaType} />
-    );
+    // if (loading) return <LoadingSpinner />;
+    // if (error) return <div>error</div>;
+    // return (
+    //   <Details details={this.props.details} mediaType={this.props.mediaType} />
+    // );
+    if (this.props.loading) return <Loading />;
+    if (this.props.error) return <Error />;
+    return <Details data={this.props.data} mediaType={this.props.mediaType} />;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    details: state.detailsReducer,
+    data: state.detailsReducer.data,
+    loading: state.detailsReducer.loading,
+    error: state.detailsReducer.error,
   };
 };
 

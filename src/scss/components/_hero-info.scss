@@ -1,6 +1,6 @@
 @import "../base/variables";
 
-.hero-information {
+.hero-info {
   padding: 2.6rem;
 
   @media (min-width: $breakpoint-laptop-m) {
@@ -10,10 +10,13 @@
     left: 0;
     bottom: 0;
     height: 100%;
-    width: 55%;
+    width: 60%;
     z-index: 2000;
     display: flex;
     align-items: center;
+  }
+  @media (min-width: $breakpoint-laptop-l) {
+    width: 50%;
   }
 
   &-head {
@@ -36,6 +39,7 @@
     font-size: 1.5rem;
     font-weight: 300;
     margin-right: 2rem;
+    line-height: 1.8;
   }
 
   &-overview {
@@ -45,8 +49,7 @@
       display: block;
       margin-top: 1.6rem;
     }
-
-    @media (min-width: $breakpoint-laptop-l) {
+    @media (min-width: $breakpoint-laptop-m) {
       width: 90%;
     }
   }

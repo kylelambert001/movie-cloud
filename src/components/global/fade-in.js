@@ -1,7 +1,19 @@
 import React, { Component } from "react";
 import { motion } from "framer-motion";
 
-import { fadeInVariant } from "../../animations/variants";
+const variant = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
 
 class FadeIn extends Component {
   constructor(props) {
@@ -22,7 +34,7 @@ class FadeIn extends Component {
       <motion.div
         initial="hidden"
         animate={hasLoaded ? "visible" : "hidden"}
-        variants={fadeInVariant}
+        variants={variant}
         style={{ height: "100%" }}
         className="fade-in">
         {this.props.children(this.handleOnLoad)}

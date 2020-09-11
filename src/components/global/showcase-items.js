@@ -4,11 +4,11 @@ import React, { PureComponent } from "react";
 
 class ShowcaseItems extends PureComponent {
   render() {
-    const { heading, itemsArray, mediaType } = this.props;
+    const { heading, items, mediaType } = this.props;
     return (
       <div className="showcase-items">
         <h2 className="showcase-items-head">{heading}</h2>
-        <Carousel itemsArray={itemsArray} mediaType={mediaType} />
+        <Carousel items={items} mediaType={mediaType} />
       </div>
     );
   }

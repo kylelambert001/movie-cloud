@@ -1,15 +1,24 @@
+// global
 @import "./base/resets";
 @import "./base/variables";
 @import "./base/typography";
 
+// components
 @import "./components/app";
 @import "./components/hero";
 @import "./components/sidebar";
 @import "./components/hamburger";
-@import "./components/loading-spinner";
-@import "./components/hero-information";
+@import "./components/spinner";
+@import "./components/hero-info";
 @import "./components/hero-backdrop";
 @import "./components/carousel";
 @import "./components/card";
 @import "./components/showcase-items";
 @import "./components/footer";
+
+// layouts
+@import "./layouts/page-layout";
+
+// pages
+@import "./pages/loading";
+@import "./pages/error";

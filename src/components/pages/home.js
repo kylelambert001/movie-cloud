@@ -1,40 +1,44 @@
 import React, { Component } from "react";
-import { motion } from "framer-motion";
 
-import { pageVariant } from "../../animations/variants";
-import { getRandomItem } from "../../utils/helpers";
 import Hero from "../global/hero";
 import ShowcaseItems from "../global/showcase-items";
 import Footer from "../global/footer";
+import PageLayout from "../layouts/page-layout";
+
+import { guardArray } from "../../utils/guards";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.randomMovie = getRandomItem(props.home.trendingMovies.data);
-  }
-
   componentDidMount() {
     document.title = "Home";
   }
 
   render() {
+    const { trendingMovies, trendingShows } = this.props;
     return (
-      <motion.div initial="hidden" animate="visible" variants={pageVariant}>
-        <Hero data={this.randomMovie} mediaType="movie" />
-        <section>
-          <ShowcaseItems
-            heading="Trending Movies"
-            itemsArray={this.props.home.trendingMovies.data}
-            mediaType="movie"
-          />
-          <ShowcaseItems
-            heading="Trending Shows"
-            itemsArray={this.props.home.trendingShows.data}
-            mediaType="tv"
-          />
-        </section>
+      <PageLayout>
+        <main>
+          {guardArray(trendingMovies.data) && (
+            <Hero item={trendingMovies.data[0]} mediaType="movie" />
+          )}
+          <section>
+            {guardArray(trendingMovies.data) && (
+              <ShowcaseItems
+                heading="Trending Movies"
+                items={trendingMovies.data}
+                mediaType="movie"
+              />
+            )}
+            {guardArray(trendingShows.data) && (
+              <ShowcaseItems
+                heading="Trending Shows"
+                items={trendingShows.data}
+                mediaType="tv"
+              />
+            )}
+          </section>
+        </main>
         <Footer />
-      </motion.div>
+      </PageLayout>
     );
   }
 }

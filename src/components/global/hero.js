@@ -1,17 +1,14 @@
 import React from "react";
 
 import HeroBackdrop from "./hero-backdrop";
-import HeroInformation from "./hero-information";
+import HeroInfo from "./hero-info";
 
 function Hero(props) {
-  const { mediaType, data } = props;
+  const { mediaType, item } = props;
   return (
     <section className="hero">
-      <HeroBackdrop
-        backdropPath={data.backdrop_path}
-        alt={mediaType === "movie" ? data.title : data.name}
-      />
-      <HeroInformation data={data} mediaType={mediaType} />
+      <HeroBackdrop item={item} mediaType={mediaType} />
+      <HeroInfo item={item} mediaType={mediaType} />
     </section>
   );
 }

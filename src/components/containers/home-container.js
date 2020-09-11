@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import LoadingSpinner from "../global/loading-spinner";
 import Home from "../pages/home";
+import Loading from "../pages/loading";
+import Error from "../pages/error";
 
 import * as actions from "../../store/actions/homeActions";
-const listTypes = ["trendingMovies", "trendingShows"];
+import { isLoading, isError } from "../../utils/helpers";
+
+const categories = ["trendingMovies", "trendingShows"];
 
 class HomeContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.isLoading = isLoading.bind(this);
+    this.isError = isError.bind(this);
+  }
+
   componentDidMount() {
     this.props.getTrendingMovies();
     this.props.getTrendingShows();
@@ -17,19 +26,22 @@ class HomeContainer extends Component {
     this.props.resetHomeReducer();
   }
 
-  isLoading() {
-    return listTypes.some((name) => this.props.home[name].loading);
-  }
-
   render() {
-    if (this.isLoading()) return <LoadingSpinner />;
-    return <Home home={this.props.home} />;
+    if (this.isLoading(categories)) return <Loading />;
+    if (this.isError(categories)) return <Error />;
+    return (
+      <Home
+        trendingMovies={this.props.trendingMovies}
+        trendingShows={this.props.trendingShows}
+      />
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    home: state.homeReducer,
+    trendingMovies: state.homeReducer.trendingMovies,
+    trendingShows: state.homeReducer.trendingShows,
   };
 };
 

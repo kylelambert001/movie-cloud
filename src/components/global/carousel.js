@@ -9,14 +9,14 @@ class Carousel extends Component {
   }
 
   render() {
-    const { itemsArray, mediaType } = this.props;
+    const { items, mediaType } = this.props;
     return (
       <div className="carousel">
         {/* <button className="carousel-prev">&#9664;</button>
         <button className="carousel-next">&#9658;</button> */}
         <div ref={this.carouselItems} className="carousel-items">
-          {itemsArray.map((item) => (
-            <Card key={uuidv4()} data={item} mediaType={mediaType} />
+          {items.map((item) => (
+            <Card key={uuidv4()} item={item} mediaType={mediaType} />
           ))}
         </div>
       </div>

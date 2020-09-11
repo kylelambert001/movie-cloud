@@ -10,7 +10,10 @@ function footer(props) {
       <div className="footer-copy">
         <p className="footer-copy-text">
           &#169; {`${getCurrentYear()}. Data provided by `}
-          <a href="https://www.themoviedb.org/" target="_blank">
+          <a
+            href="https://www.themoviedb.org/"
+            target="_blank"
+            rel="noopener noreferrer">
             TMDb
           </a>
           .

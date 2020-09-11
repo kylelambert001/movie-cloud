@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Movies from "../pages/movies";
-import LoadingSpinner from "../global/loading-spinner";
-import * as actions from "../../store/actions/moviesActions";
+import Loading from "../pages/loading";
+import Error from "../pages/error";
 
-const listTypes = [
+import * as actions from "../../store/actions/moviesActions";
+import { isLoading, isError } from "../../utils/helpers";
+
+const categories = [
   "popularMovies",
   "nowPlayingMovies",
   "topRatedMovies",
@@ -13,6 +16,12 @@ const listTypes = [
 ];
 
 class MoviesContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.isLoading = isLoading.bind(this);
+    this.isError = isError.bind(this);
+  }
+
   componentDidMount() {
     this.props.getNowPlayingMovies();
     this.props.getPopularMovies();
@@ -24,19 +33,26 @@ class MoviesContainer extends Component {
     this.props.resetMoviesReducer();
   }
 
-  isLoading() {
-    return listTypes.some((name) => this.props.movies[name].loading);
-  }
-
   render() {
-    if (this.isLoading()) return <LoadingSpinner />;
-    return <Movies movies={this.props.movies} />;
+    if (this.isLoading(categories)) return <Loading />;
+    if (this.isError(categories)) return <Error />;
+    return (
+      <Movies
+        popularMovies={this.props.popularMovies}
+        topRatedMovies={this.props.topRatedMovies}
+        nowPlayingMovies={this.props.nowPlayingMovies}
+        upcomingMovies={this.props.upcomingMovies}
+      />
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.moviesReducer,
+    popularMovies: state.moviesReducer.popularMovies,
+    topRatedMovies: state.moviesReducer.topRatedMovies,
+    nowPlayingMovies: state.moviesReducer.nowPlayingMovies,
+    upcomingMovies: state.moviesReducer.upcomingMovies,
   };
 };
 

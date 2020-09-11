@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { ReactComponent as HomeIcon } from "../../assets/home.svg";
 import { ReactComponent as MovieIcon } from "../../assets/movie.svg";
 import { ReactComponent as TelevisionIcon } from "../../assets/television.svg";
-import { ReactComponent as SearchIcon } from "../../assets/search.svg";
+// import { ReactComponent as SearchIcon } from "../../assets/search.svg";
 
 function Sidebar(props) {
   return (
@@ -25,7 +25,7 @@ function Sidebar(props) {
               className="sidebar-link"
               exact
               activeClassName="sidebar-link--active"
-              to="/movies">
+              to="/movie">
               <MovieIcon />
             </NavLink>
           </li>
@@ -34,7 +34,7 @@ function Sidebar(props) {
               className="sidebar-link"
               exact
               activeClassName="sidebar-link--active"
-              to="/shows">
+              to="/tv">
               <TelevisionIcon />
             </NavLink>
           </li>
