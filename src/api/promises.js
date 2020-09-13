@@ -31,3 +31,9 @@ export const getShowDetailsAsync = (contentId) => {
     `https://api.themoviedb.org/3/tv/${contentId}?api_key=${API_KEY}&append_to_response=credits,images,episode_groups`
   );
 };
+
+export const getPersonDetailsAsync = (contentId) => {
+  return axios.get(
+    `https://api.themoviedb.org/3/person/${contentId}?api_key=${API_KEY}`
+  );
+};

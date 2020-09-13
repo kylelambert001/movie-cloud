@@ -1,0 +1,33 @@
+@import "../base/variables";
+
+.summary {
+  &-head {
+    margin-bottom: 1.6rem;
+  }
+
+  &-overview,
+  &-bio {
+  }
+}
+
+.stats {
+  margin: 2.6rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 1.8rem;
+
+  &-item {
+    display: flex;
+    padding: 0.2rem 0;
+    font-size: 1.6rem;
+    line-height: 1.6;
+  }
+
+  &-key {
+    min-width: 180px;
+  }
+
+  &-value {
+    color: $text-secondary;
+  }
+}

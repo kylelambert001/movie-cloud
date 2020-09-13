@@ -12,9 +12,9 @@ function isMatched(type) {
 }
 
 function App(props) {
-  const renderDetailsRoute = (params) => {
-    if (isMatched(params.type))
-      return <DetailsContainer mediaType={params.type} itemId={params.id} />;
+  const renderDetailsRoute = (history) => {
+    if (isMatched(history.match.params.type))
+      return <DetailsContainer history={history} />;
     return <Redirect to="/" />;
   };
 
@@ -28,9 +28,7 @@ function App(props) {
         <Route
           exact
           path="/:type/:id"
-          render={(history) =>
-            renderDetailsRoute(history.match.params)
-          }></Route>
+          render={(history) => renderDetailsRoute(history)}></Route>
       </Switch>
     </div>
   );

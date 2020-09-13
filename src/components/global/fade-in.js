@@ -35,7 +35,10 @@ class FadeIn extends Component {
         initial="hidden"
         animate={hasLoaded ? "visible" : "hidden"}
         variants={variant}
-        style={{ height: "100%" }}
+        style={{
+          height: "100%",
+          width: "100%",
+        }}
         className="fade-in">
         {this.props.children(this.handleOnLoad)}
       </motion.div>

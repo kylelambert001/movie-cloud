@@ -12,10 +12,18 @@ class DetailsContainer extends Component {
     this.fetchDetails();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.history !== prevProps.history) {
+      this.props.resetDetailsReducer();
+      this.fetchDetails();
+    }
+  }
+
   fetchDetails() {
-    const { mediaType, itemId } = this.props;
-    if (mediaType === "movie") this.props.getMovieDetails(itemId);
-    if (mediaType === "tv") this.props.getShowDetails(itemId);
+    const { id, type } = this.props.history.match.params;
+    if (type === "movie") this.props.getMovieDetails(id);
+    if (type === "tv") this.props.getShowDetails(id);
+    if (type === "person") this.props.getPersonDetails(id);
   }
 
   componentWillUnmount() {
@@ -23,16 +31,11 @@ class DetailsContainer extends Component {
   }
 
   render() {
-    // const { loading, error, data } = this.props.details;
+    const { type } = this.props.history.match.params;
 
-    // if (loading) return <LoadingSpinner />;
-    // if (error) return <div>error</div>;
-    // return (
-    //   <Details details={this.props.details} mediaType={this.props.mediaType} />
-    // );
     if (this.props.loading) return <Loading />;
     if (this.props.error) return <Error />;
-    return <Details data={this.props.data} mediaType={this.props.mediaType} />;
+    return <Details data={this.props.data} mediaType={type} />;
   }
 }
 
@@ -46,9 +49,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getMovieDetails: (contentId) =>
-      dispatch(actions.getMovieDetails(contentId)),
-    getShowDetails: (contentId) => dispatch(actions.getShowDetails(contentId)),
+    getMovieDetails: (id) => dispatch(actions.getMovieDetails(id)),
+    getShowDetails: (id) => dispatch(actions.getShowDetails(id)),
+    getPersonDetails: (id) => dispatch(actions.getPersonDetails(id)),
     resetDetailsReducer: () => dispatch(actions.resetDetailsReducer()),
   };
 };

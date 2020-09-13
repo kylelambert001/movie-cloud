@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import StarRating from "./star-rating";
-import {
-  truncateStr,
-  getYear,
-  getGenres,
-  getGenresById,
-} from "../../utils/helpers";
+import { truncateStr, getGenres, getGenresById } from "../../utils/helpers";
 
 export const variant = {
   hidden: {
@@ -50,7 +45,7 @@ function MovieInfo(props) {
       <div className="hero-info-meta">
         <div className="hero-info-rating">
           <StarRating
-            rating={item.vote_average / 2}
+            rating={item.vote_average ? item.vote_average / 2 : 0}
             dimensions="22px"
             spacings="3px"
             emptyColors="#1c222e"
@@ -64,9 +59,6 @@ function MovieInfo(props) {
           <span className="hero-info-span">
             {getGenresById(item.genre_ids)}
           </span>
-        )}
-        {item.release_date && (
-          <span className="hero-info-span">{getYear(item.release_date)}</span>
         )}
       </div>
       {item.overview && (
@@ -86,7 +78,7 @@ function ShowInfo(props) {
       <div className="hero-info-meta">
         <div className="hero-info-rating">
           <StarRating
-            rating={item.vote_average / 2}
+            rating={item.vote_average ? item.vote_average / 2 : 0}
             dimensions="22px"
             spacings="3px"
             emptyColors="#1c222e"
@@ -100,9 +92,6 @@ function ShowInfo(props) {
           <span className="hero-info-span">
             {getGenresById(item.genre_ids)}
           </span>
-        )}
-        {item.first_air_date && (
-          <span className="hero-info-span">{getYear(item.first_air_date)}</span>
         )}
       </div>
       {item.overview && (

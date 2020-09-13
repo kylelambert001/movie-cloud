@@ -3,20 +3,15 @@ import Ratings from "react-ratings-declarative";
 
 class StarRating extends Component {
   render() {
-    const {
-      rating = 0,
-      dimensions = "15px",
-      spacings = "2px",
-      emptyColors = "#949cb0",
-    } = this.props;
+    const { rating, dimensions, spacings, emptyColors } = this.props;
 
     return (
       <Ratings
-        rating={rating}
+        rating={rating || 0}
         widgetRatedColors="#24baef"
-        widgetEmptyColors={emptyColors}
-        widgetDimensions={dimensions}
-        widgetSpacings={spacings}>
+        widgetEmptyColors={emptyColors || "#949cb0"}
+        widgetDimensions={dimensions || "15px"}
+        widgetSpacings={spacings || "2px"}>
         <Ratings.Widget />
         <Ratings.Widget />
         <Ratings.Widget />

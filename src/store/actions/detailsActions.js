@@ -1,4 +1,8 @@
-import { getMovieDetailsAsync, getShowDetailsAsync } from "../../api/promises";
+import {
+  getMovieDetailsAsync,
+  getShowDetailsAsync,
+  getPersonDetailsAsync,
+} from "../../api/promises";
 
 import * as types from "../types";
 import { batch } from "react-redux";
@@ -41,6 +45,24 @@ export const getShowDetails = (contentId) => {
         batch(() => {
           dispatch(action(types.GET_SHOW_DETAILS_ERROR, error));
           dispatch(action(types.GET_SHOW_DETAILS_LOADING, false));
+        });
+      });
+  };
+};
+
+export const getPersonDetails = (contentId) => {
+  return (dispatch, getState) => {
+    getPersonDetailsAsync(contentId)
+      .then((data) => {
+        batch(() => {
+          dispatch(action(types.GET_PERSON_DETAILS, data.data));
+          dispatch(action(types.GET_PERSON_DETAILS_LOADING, false));
+        });
+      })
+      .catch((error) => {
+        batch(() => {
+          dispatch(action(types.GET_PERSON_DETAILS_ERROR, error));
+          dispatch(action(types.GET_PERSON_DETAILS_LOADING, false));
         });
       });
   };

@@ -8,10 +8,6 @@ import PageLayout from "../layouts/page-layout";
 import { guardArray } from "../../utils/guards";
 
 class Shows extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     document.title = "TV Shows";
   }

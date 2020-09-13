@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import StarRating from "./star-rating";
 import FadeIn from "./fade-in";
+import Placeholder from "./placeholder";
 
 function Card(props) {
   const { mediaType, item } = props;
@@ -23,10 +24,10 @@ function MovieCard(props) {
   return (
     <>
       <div className="card-poster">
-        <FadeIn>
-          {(handleOnLoad) => (
-            <Link className="card-poster-link" to={`/movie/${item.id}`}>
-              {item.poster_path && (
+        <Link className="card-poster-link" to={`/movie/${item.id}`}>
+          {item.poster_path ? (
+            <FadeIn>
+              {(handleOnLoad) => (
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   alt={item.title}
@@ -34,9 +35,11 @@ function MovieCard(props) {
                   onLoad={handleOnLoad}
                 />
               )}
-            </Link>
+            </FadeIn>
+          ) : (
+            <Placeholder />
           )}
-        </FadeIn>
+        </Link>
       </div>
       <div className="card-meta">
         <div className="card-line card-line-one">
@@ -56,10 +59,10 @@ function ShowCard(props) {
   return (
     <>
       <div className="card-poster">
-        <FadeIn>
-          {(handleOnLoad) => (
-            <Link className="card-poster-link" to={`/tv/${item.id}`}>
-              {item.poster_path && (
+        <Link className="card-poster-link" to={`/tv/${item.id}`}>
+          {item.poster_path ? (
+            <FadeIn>
+              {(handleOnLoad) => (
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                   alt={item.name}
@@ -67,9 +70,11 @@ function ShowCard(props) {
                   onLoad={handleOnLoad}
                 />
               )}
-            </Link>
+            </FadeIn>
+          ) : (
+            <Placeholder />
           )}
-        </FadeIn>
+        </Link>
       </div>
       <div className="card-meta">
         <div className="card-line card-line-one">
@@ -89,10 +94,10 @@ function PersonCard(props) {
   return (
     <>
       <div className="card-poster">
-        <FadeIn>
-          {(handleOnLoad) => (
-            <Link className="card-poster-link" to={`/person/${item.id}`}>
-              {item.profile_path && (
+        <Link className="card-poster-link" to={`/person/${item.id}`}>
+          {item.profile_path ? (
+            <FadeIn>
+              {(handleOnLoad) => (
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
                   alt={item.name}
@@ -100,9 +105,11 @@ function PersonCard(props) {
                   onLoad={handleOnLoad}
                 />
               )}
-            </Link>
+            </FadeIn>
+          ) : (
+            <Placeholder />
           )}
-        </FadeIn>
+        </Link>
       </div>
       <div className="card-meta">
         <div className="card-line card-line-one">
