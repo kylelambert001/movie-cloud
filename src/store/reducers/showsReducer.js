@@ -124,7 +124,7 @@ const showsReducer = (state = initState, action) => {
     case types.RESET_SHOWS_REDUCER:
       return initState;
     default:
-      return state;
+      return initState;
   }
 };
 

@@ -125,7 +125,7 @@ const moviesReducer = (state = initState, action) => {
     case types.RESET_MOVIES_REDUCER:
       return initState;
     default:
-      return state;
+      return initState;
   }
 };
 

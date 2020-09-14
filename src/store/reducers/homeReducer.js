@@ -66,7 +66,7 @@ const homeReducer = (state = initState, action) => {
     case types.RESET_HOME_REDUCER:
       return initState;
     default:
-      return state;
+      return initState;
   }
 };
 
