@@ -3,19 +3,16 @@ import React, { Component } from "react";
 import Hero from "../global/hero";
 import ShowcaseItems from "../global/showcase-items";
 import Footer from "../global/footer";
-import PageLayout from "../layouts/page-layout";
+
+import PageTransition from "../layouts/page-transition";
 
 import { guardArray } from "../../utils/guards";
 
 class Home extends Component {
-  componentDidMount() {
-    document.title = "Home";
-  }
-
   render() {
     const { trendingMovies, trendingShows } = this.props;
     return (
-      <PageLayout>
+      <PageTransition>
         <main>
           {guardArray(trendingMovies.data) && (
             <Hero item={trendingMovies.data[0]} mediaType="movie" />
@@ -38,7 +35,7 @@ class Home extends Component {
           </section>
         </main>
         <Footer />
-      </PageLayout>
+      </PageTransition>
     );
   }
 }

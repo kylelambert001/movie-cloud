@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 
-import PageLayout from "../layouts/page-layout";
 import ShowcaseItems from "../global/showcase-items";
 import Hero from "../global/hero";
 import Footer from "../global/footer";
+
+import PageTransition from "../layouts/page-transition";
+
 import { guardArray } from "../../utils/guards";
 
 class Movies extends Component {
@@ -20,7 +22,7 @@ class Movies extends Component {
     } = this.props;
 
     return (
-      <PageLayout>
+      <PageTransition>
         <main>
           {guardArray(popularMovies.data) && (
             <Hero item={popularMovies.data[0]} mediaType="movie" />
@@ -57,7 +59,7 @@ class Movies extends Component {
           </section>
         </main>
         <Footer />
-      </PageLayout>
+      </PageTransition>
     );
   }
 }

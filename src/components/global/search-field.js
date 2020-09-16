@@ -21,26 +21,29 @@ class SearchField extends Component {
     this.searchContainer = React.createRef();
     this.searchInput = React.createRef();
   }
+
   componentDidMount() {
     this.searchInput.current.focus();
   }
+
   render() {
     return (
-      <motion.div
+      <motion.form
         initial="hidden"
         animate="visible"
         variants={variant}
         ref={this.searchContainer}
+        autoComplete="off"
         className="search-field">
         <input
           type="text"
-          name="query"
+          value={this.props.query}
           ref={this.searchInput}
           placeholder="Search for a movie, tv show or person..."
           className="search-field-input"
           onChange={this.props.handleChange}
         />
-      </motion.div>
+      </motion.form>
     );
   }
 }

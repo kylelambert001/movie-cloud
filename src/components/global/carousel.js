@@ -16,7 +16,9 @@ class Carousel extends Component {
         <button className="carousel-next">&#9658;</button> */}
         <div ref={this.carouselItems} className="carousel-items">
           {items.map((item) => (
-            <Card key={uuidv4()} item={item} mediaType={mediaType} />
+            <div key={uuidv4()} className="carousel-card">
+              <Card item={item} mediaType={mediaType} />
+            </div>
           ))}
         </div>
       </div>

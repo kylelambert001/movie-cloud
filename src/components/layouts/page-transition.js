@@ -12,7 +12,7 @@ const variant = {
   },
 };
 
-function PageLayout(props) {
+function PageTransition(props) {
   return (
     <motion.div
       initial="hidden"
@@ -24,4 +24,4 @@ function PageLayout(props) {
   );
 }
 
-export default PageLayout;
+export default PageTransition;

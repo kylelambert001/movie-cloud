@@ -20,9 +20,8 @@
 @import "./components/overview";
 @import "./components/summary";
 @import "./components/search-field";
-
-// layouts
-@import "./layouts/page-layout";
+@import "./components/results-list";
+@import "./components/details-list";
 
 // pages
 @import "./pages/loading";

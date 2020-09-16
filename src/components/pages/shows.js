@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import Hero from "../global/hero";
 import ShowcaseItems from "../global/showcase-items";
 import Footer from "../global/footer";
-import PageLayout from "../layouts/page-layout";
+
+import PageTransition from "../layouts/page-transition";
 
 import { guardArray } from "../../utils/guards";
 
@@ -20,7 +21,7 @@ class Shows extends Component {
       onTheAirShows,
     } = this.props;
     return (
-      <PageLayout>
+      <PageTransition>
         <main>
           {guardArray(popularShows.data) && (
             <Hero item={popularShows.data[0]} mediaType="tv" />
@@ -57,7 +58,7 @@ class Shows extends Component {
           </section>
         </main>
         <Footer />
-      </PageLayout>
+      </PageTransition>
     );
   }
 }

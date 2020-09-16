@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import PageLayout from "../layouts/page-layout";
 import Spinner from "../global/spinner";
+
+import PageTransition from "../layouts/page-transition";
 
 class Loading extends Component {
   render() {
     return (
-      <PageLayout>
+      <PageTransition>
         <div className="loading">
           <Spinner />
         </div>
-      </PageLayout>
+      </PageTransition>
     );
   }
 }

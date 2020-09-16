@@ -116,7 +116,7 @@ function PersonCard(props) {
           <p className="card-text">{item.name}</p>
         </div>
         <div className="card-line card-line-two">
-          <p className="card-text">{item.character || "No Character"}</p>
+          {item.character && <p className="card-text">{item.character}</p>}
         </div>
       </div>
     </>

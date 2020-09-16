@@ -1,34 +1,4 @@
 .card {
-  flex-shrink: 0;
-  flex-grow: 0;
-  scroll-snap-align: start;
-  margin-right: 8px;
-  width: 100%;
-
-  @media (min-width: $breakpoint-mobile-m) {
-    width: calc(0.5 * (100% - 8px));
-  }
-
-  @media (min-width: $breakpoint-tablet-s) {
-    width: calc(0.33334 * (100% - 16px));
-  }
-
-  @media (min-width: $breakpoint-tablet-l) {
-    width: calc(0.25 * (100% - 24px));
-  }
-
-  @media (min-width: $breakpoint-laptop-l) {
-    width: calc(0.2 * (100% - 32px));
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    width: calc(0.16667 * (100% - 40px));
-  }
-
-  @media (min-width: $breakpoint-desktop-l) {
-    width: calc(0.14285 * (100% - 48px));
-  }
-
   &-poster {
     position: relative;
     height: 0;

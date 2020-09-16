@@ -1,25 +1,26 @@
 import React, { Component } from "react";
 
-import PageLayout from "../layouts/page-layout";
 import SearchField from "../global/search-field";
+import ResultsList from "../global/results-list";
 import Loading from "../pages/loading";
-import Error from "../pages/error";
+
+import PageTransition from "../layouts/page-transition";
 
 class Search extends Component {
+  componentDidMount() {
+    document.title = "Search";
+  }
+
   render() {
-    const { data, loading, error, handleChange } = this.props;
+    const { data, loading, query, handleChange } = this.props;
     return (
-      <PageLayout>
+      <PageTransition>
         <main>
-          <SearchField handleChange={handleChange} />
-          {data.results &&
-            data.results.map((result, i) => (
-              <div key={i}>{result.name ? result.name : result.title}</div>
-            ))}
-          ){/* {loading && <Loading />}
-          {error && <Error />} */}
+          <SearchField handleChange={handleChange} query={query} />
+          <ResultsList results={data.results} query={query} />
+          {loading && <Loading />}
         </main>
-      </PageLayout>
+      </PageTransition>
     );
   }
 }
