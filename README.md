@@ -3,6 +3,11 @@
 A modern and user-friendly website to browse your favorite Movies, TV Shows, and Actors.
 
 ## Introduction
+### Screenshots
+
+![movies](./src/assets/images/movies.jpg)
+![movie-detail](./src/assets/images/movie-detail.jpg)
+![search](./src/assets/images/search.jpg)
 
 ### Goals
 
