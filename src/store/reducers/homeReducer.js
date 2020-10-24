@@ -70,38 +70,4 @@ const homeReducer = (state = initState, action) => {
   }
 };
 
-// const initState = {
-//   trendingMovies: null,
-//   trendingShows: null,
-//   isLoading: true,
-//   isError: null,
-// };
-
-// const homeReducer = (state = initState, action) => {
-//   switch (action.type) {
-//     case types.GET_TRENDING_MOVIES:
-//       return {
-//         ...state,
-//         trendingMovies: action.payload,
-//       };
-//     case types.GET_TRENDING_SHOWS:
-//       return {
-//         ...state,
-//         trendingShows: action.payload,
-//       };
-//     case types.HOME_LOADING:
-//       return {
-//         ...state,
-//         isLoading: action.payload,
-//       };
-//     case types.HOME_ERROR:
-//       return {
-//         ...state,
-//         isError: action.payload,
-//       };
-//     default:
-//       return initState;
-//   }
-// };
-
 export default homeReducer;

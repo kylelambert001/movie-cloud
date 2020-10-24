@@ -12,8 +12,6 @@ class Carousel extends Component {
     const { items, mediaType } = this.props;
     return (
       <div className="carousel">
-        {/* <button className="carousel-prev">&#9664;</button>
-        <button className="carousel-next">&#9658;</button> */}
         <div ref={this.carouselItems} className="carousel-items">
           {items.map((item) => (
             <div key={uuidv4()} className="carousel-card">

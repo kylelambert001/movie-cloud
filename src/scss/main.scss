@@ -1,9 +1,9 @@
-// global
+// Global
 @import "./base/resets";
 @import "./base/variables";
 @import "./base/typography";
 
-// components
+// Components
 @import "./components/app";
 @import "./components/hero";
 @import "./components/sidebar";
@@ -24,6 +24,6 @@
 @import "./components/details-list";
 @import "./components/search-message";
 
-// pages
+// Pages
 @import "./pages/loading";
 @import "./pages/error";
