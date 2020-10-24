@@ -35,6 +35,7 @@ export const getSearchResults = (query, page) => {
 };
 
 export const resetSearchReducer = () => {
+  console.log("reset");
   return {
     type: types.RESET_SEARCH_REDUCER,
   };

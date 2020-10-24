@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 import SearchField from "../global/search-field";
 import ResultsList from "../global/results-list";
+import SearchMessage from "../global/search-message";
 import Loading from "../pages/loading";
+import Error from "../pages/error";
 
 import PageTransition from "../layouts/page-transition";
 
@@ -12,13 +14,14 @@ class Search extends Component {
   }
 
   render() {
-    const { data, loading, query, handleChange } = this.props;
+    const { data, loading, handleChange, error } = this.props;
     return (
       <PageTransition>
         <main>
-          <SearchField handleChange={handleChange} query={query} />
-          <ResultsList results={data.results} query={query} />
+          <SearchField handleChange={handleChange} />
+          {data.results && <ResultsList results={data.results} />}
           {loading && <Loading />}
+          {error && <Error />}
         </main>
       </PageTransition>
     );

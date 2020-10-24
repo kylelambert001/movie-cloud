@@ -4,50 +4,24 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/searchActions";
 import Search from "../pages/search";
 
-import { debounce } from "../../utils/helpers";
-
 class SearchContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      page: 1,
-      query: "",
-    };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  fetchResultsDebounce = debounce(() => {
-    const { query, page } = this.state;
-    if (query) {
-      this.props.getSearchResults(query, page);
-      console.log("Fetched: " + query);
-    }
-  }, 500);
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.query !== this.state.query) {
-      if (this.state.query) {
-        this.fetchResultsDebounce();
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    this.props.resetSearchReducer();
-  }
-
   handleChange(e) {
-    this.setState({
-      query: e.target.value,
-    });
-    // this.props.resetSearchReducer();
+    this.props.resetSearchReducer();
+    const query = e.target.value;
+    if (query) {
+      this.props.getSearchResults(e.target.value);
+    }
   }
 
   render() {
     return (
       <Search
         data={this.props.data}
-        query={this.state.query}
         loading={this.props.loading}
         error={this.props.error}
         handleChange={this.handleChange}

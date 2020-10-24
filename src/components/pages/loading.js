@@ -8,7 +8,9 @@ class Loading extends Component {
     return (
       <PageTransition>
         <div className="loading">
-          <Spinner />
+          <div className="loading-spinner">
+            <Spinner />
+          </div>
         </div>
       </PageTransition>
     );

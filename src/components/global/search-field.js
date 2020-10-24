@@ -37,7 +37,6 @@ class SearchField extends Component {
         className="search-field">
         <input
           type="text"
-          value={this.props.query}
           ref={this.searchInput}
           placeholder="Search for a movie, tv show or person..."
           className="search-field-input"

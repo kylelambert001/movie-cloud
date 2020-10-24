@@ -4,26 +4,34 @@ import { v4 as uuidv4 } from "uuid";
 
 import Card from "../global/card";
 
+const variant = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      ease: "easeOut",
+      duration: 1,
+    },
+  },
+};
+
 class ResultsList extends PureComponent {
   render() {
-    const { results, query } = this.props;
+    const { results } = this.props;
     return (
       <section className="results-list">
-        {query && <h2 className="results-list-head">Results for: {query}</h2>}
-        {results && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="results-list-grid">
-            {results.map((result) => (
-              <Card
-                key={uuidv4()}
-                item={result}
-                mediaType={result.media_type}
-              />
-            ))}
-          </motion.div>
-        )}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={variant}
+          className="results-list-grid">
+          {results.map((result) => (
+            <Card key={uuidv4()} item={result} mediaType={result.media_type} />
+          ))}
+        </motion.div>
       </section>
     );
   }
