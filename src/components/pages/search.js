@@ -13,15 +13,37 @@ class Search extends Component {
     document.title = "Search";
   }
 
+  renderSearch() {
+    const { data, loading, error } = this.props;
+    if (loading) {
+      return <Loading />;
+    } else if (error) {
+      return <Error />;
+    } else {
+      if (!data.results) {
+        return (
+          <SearchMessage
+            message="Hi, welcome to MovieCloud's search functionality. Simply start
+            typing to search for movies, tv shows or people..."
+          />
+        );
+      } else if (data.results && data.results.length > 0) {
+        return <ResultsList results={data.results} />;
+      } else {
+        return (
+          <SearchMessage message="Sorry we couldn't find any results for your search term..." />
+        );
+      }
+    }
+  }
+
   render() {
-    const { data, loading, handleChange, error } = this.props;
+    const { handleChange } = this.props;
     return (
       <PageTransition>
         <main>
           <SearchField handleChange={handleChange} />
-          {data.results && <ResultsList results={data.results} />}
-          {loading && <Loading />}
-          {error && <Error />}
+          {this.renderSearch()}
         </main>
       </PageTransition>
     );
